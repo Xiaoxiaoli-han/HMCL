@@ -35,7 +35,7 @@ public class AboutPage extends StackPane {
         ComponentList about = new ComponentList();
         {
             IconedTwoLineListItem launcher = new IconedTwoLineListItem();
-            launcher.setImage(new Image("/assets/img/dragon_breath.png"));
+            launcher.setImage(new Image("/assets/img/rainbow.png"));
             launcher.setTitle("Play Minecraft! Launcher");
             launcher.setSubtitle(Metadata.VERSION);
             launcher.setExternalLink("https://pmcl.fun");
@@ -105,7 +105,7 @@ public class AboutPage extends StackPane {
             contributors.setExternalLink("https://github.com/xqzi/PMCL/graphs/contributors");
 
             IconedTwoLineListItem users = new IconedTwoLineListItem();
-            users.setImage(new Image("/assets/img/dragon_breath.png"));
+            users.setImage(new Image("/assets/img/rainbow.png"));
             users.setTitle(i18n("about.thanks_to.users"));
             users.setSubtitle(i18n("about.thanks_to.users.statement"));
             users.setExternalLink("https://pmcl.fun/sponsor");
