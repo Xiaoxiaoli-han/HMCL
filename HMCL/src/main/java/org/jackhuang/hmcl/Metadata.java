@@ -30,19 +30,19 @@ import java.nio.file.Paths;
 public final class Metadata {
     private Metadata() {}
 
-    public static final String NAME = "HMCL";
-    public static final String FULL_NAME = "Hello Minecraft! Launcher";
+    public static final String NAME = "PMCL";
+    public static final String FULL_NAME = "Play Minecraft! Launcher";
     public static final String VERSION = System.getProperty("hmcl.version.override", JarUtils.getManifestAttribute("Implementation-Version", "@develop@"));
 
     public static final String TITLE = NAME + " " + VERSION;
     public static final String FULL_TITLE = FULL_NAME + " v" + VERSION;
 
-    public static final String UPDATE_URL = System.getProperty("hmcl.update_source.override", "https://hmcl.huangyuhui.net/api/update_link");
+    public static final String UPDATE_URL = System.getProperty("hmcl.update_source.override", "https://docs.hmcl.net/version/update_link");
     public static final String CONTACT_URL = "https://docs.hmcl.net/help.html";
-    public static final String HELP_URL = "https://docs.hmcl.net";
+    public static final String HELP_URL = "https://docs.hmcl.net/help.html";
     public static final String CHANGELOG_URL = "https://docs.hmcl.net/changelog/";
-    public static final String PUBLISH_URL = "https://www.mcbbs.net/thread-142335-1-1.html";
-    public static final String EULA_URL = "https://docs.hmcl.net/eula/hmcl.html";
+    public static final String PUBLISH_URL = "https://docs.hmcl.net";
+    public static final String EULA_URL = "https://docs.hmcl.net/eula.html";
 
     public static final String BUILD_CHANNEL = JarUtils.getManifestAttribute("Build-Channel", "nightly");
     public static final String GITHUB_SHA = JarUtils.getManifestAttribute("GitHub-SHA", null);

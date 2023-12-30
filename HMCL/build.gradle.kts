@@ -12,7 +12,7 @@ plugins {
 }
 
 val isOfficial = System.getenv("HMCL_SIGNATURE_KEY") != null
-        || (System.getenv("GITHUB_REPOSITORY_OWNER") == "huanghongxun" && System.getenv("GITHUB_BASE_REF").isNullOrEmpty())
+        || (System.getenv("GITHUB_REPOSITORY_OWNER") == "xqzi" && System.getenv("GITHUB_BASE_REF").isNullOrEmpty())
 
 val buildNumber = System.getenv("BUILD_NUMBER")?.toInt().let { number ->
     val offset = System.getenv("BUILD_NUMBER_OFFSET")?.toInt() ?: 0
@@ -118,8 +118,8 @@ tasks.getByName<com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar>("sha
 
     manifest {
         attributes(
-            "Created-By" to "Copyright(c) 2013-2023 huangyuhui.",
-            "Main-Class" to "org.jackhuang.hmcl.Main",
+            "Created-By" to "Copyright(c) 2013-2023 qinzi.",
+            "Main-Class" to "org.qinzi.pmcl.Main",
             "Multi-Release" to "true",
             "Implementation-Version" to project.version,
             "Microsoft-Auth-Id" to microsoftAuthId,
