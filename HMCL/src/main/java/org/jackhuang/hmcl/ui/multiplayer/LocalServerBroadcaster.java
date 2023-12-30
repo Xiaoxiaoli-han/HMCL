@@ -66,7 +66,8 @@ public class LocalServerBroadcaster implements AutoCloseable {
         return onExit;
     }
 
-    public static final Pattern ADDRESS_PATTERN = Pattern.compile("^\\s*(\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}):(\\d{1,5})\\s*$");
+    public static final Pattern ADDRESS_PATTERN = Pattern
+            .compile("^\\s*(\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}):(\\d{1,5})\\s*$");
 
     public void start() {
         Thread forwardPortThread = newThread(this::forwardPort, "ForwardPort");
@@ -80,13 +81,14 @@ public class LocalServerBroadcaster implements AutoCloseable {
                 throw new MalformedURLException();
             }
             try (Socket forwardingSocket = new Socket();
-                 ServerSocket serverSocket = new ServerSocket()) {
+                    ServerSocket serverSocket = new ServerSocket()) {
                 forwardingSocket.setSoTimeout(30000);
                 forwardingSocket.connect(new InetSocketAddress(matcher.group(1), Lang.parseInt(matcher.group(2), 0)));
 
                 serverSocket.bind(null);
 
-                Thread broadcastMOTDThread = newThread(() -> broadcastMOTD(serverSocket.getLocalPort()), "BroadcastMOTD");
+                Thread broadcastMOTDThread = newThread(() -> broadcastMOTD(serverSocket.getLocalPort()),
+                        "BroadcastMOTD");
                 broadcastMOTDThread.start();
 
                 LOG.log(Level.INFO, "Listening " + serverSocket.getLocalSocketAddress());
@@ -111,7 +113,8 @@ public class LocalServerBroadcaster implements AutoCloseable {
             byte[] buf = new byte[1024];
             while (true) {
                 int len = is.read(buf, 0, buf.length);
-                if (len < 0) break;
+                if (len < 0)
+                    break;
                 LOG.log(Level.INFO, "Forwarding buffer " + len);
                 os.write(buf, 0, len);
             }
@@ -133,7 +136,8 @@ public class LocalServerBroadcaster implements AutoCloseable {
 
         while (running) {
             try {
-                byte[] data = String.format("[MOTD]%s[/MOTD][AD]%d[/AD]", i18n("multiplayer.session.name.motd"), port).getBytes(StandardCharsets.UTF_8);
+                byte[] data = String.format("[MOTD]%s[/MOTD][AD]%d[/AD]", i18n("multiplayer.session.name.motd"), port)
+                        .getBytes(StandardCharsets.UTF_8);
                 DatagramPacket packet = new DatagramPacket(data, 0, data.length, broadcastAddress, 4445);
                 socket.send(packet);
                 LOG.finest("Broadcast server 0.0.0.0:" + port);

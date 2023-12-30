@@ -74,25 +74,29 @@ public class MultiplayerPageSkin extends DecoratorAnimatedPage.DecoratorAnimated
                         item.setLeftGraphic(wrap(SVG.HELP_CIRCLE_OUTLINE));
                         item.setOnAction(e -> FXUtils.openLink("https://afdian.net/a/loooo?tab=feed"));
                     })
-//                    .addNavigationDrawerItem(item -> {
-//                        item.setTitle(i18n("multiplayer.help.1"));
-//                        item.setLeftGraphic(wrap(SVG.HELP_CIRCLE_OUTLINE));
-//                        item.setOnAction(e -> FXUtils.openLink("https://docs.hmcl.net/multiplayer/admin.html"));
-//                    })
                     // .addNavigationDrawerItem(item -> {
-                    //     item.setTitle(i18n("multiplayer.help.2"));
-                    //     item.setLeftGraphic(wrap(SVG.HELP_CIRCLE_OUTLINE));
-                    //     item.setOnAction(e -> FXUtils.openLink("https://docs.hmcl.net/multiplayer/help.html"));
+                    // item.setTitle(i18n("multiplayer.help.1"));
+                    // item.setLeftGraphic(wrap(SVG.HELP_CIRCLE_OUTLINE));
+                    // item.setOnAction(e ->
+                    // FXUtils.openLink("https://docs.hmcl.net/multiplayer/admin.html"));
                     // })
                     // .addNavigationDrawerItem(item -> {
-                    //     item.setTitle(i18n("multiplayer.help.3"));
-                    //     item.setLeftGraphic(wrap(SVG.HELP_CIRCLE_OUTLINE));
-                    //     item.setOnAction(e -> FXUtils.openLink("https://docs.hmcl.net/multiplayer/help.html#%E5%88%9B%E5%BB%BA%E6%96%B9"));
+                    // item.setTitle(i18n("multiplayer.help.2"));
+                    // item.setLeftGraphic(wrap(SVG.HELP_CIRCLE_OUTLINE));
+                    // item.setOnAction(e ->
+                    // FXUtils.openLink("https://docs.hmcl.net/multiplayer/help.html"));
                     // })
                     // .addNavigationDrawerItem(item -> {
-                    //     item.setTitle(i18n("multiplayer.help.4"));
-                    //     item.setLeftGraphic(wrap(SVG.HELP_CIRCLE_OUTLINE));
-                    //     item.setOnAction(e -> FXUtils.openLink("https://docs.hmcl.net/multiplayer/help.html#%E5%8F%82%E4%B8%8E%E8%80%85"));
+                    // item.setTitle(i18n("multiplayer.help.3"));
+                    // item.setLeftGraphic(wrap(SVG.HELP_CIRCLE_OUTLINE));
+                    // item.setOnAction(e ->
+                    // FXUtils.openLink("https://docs.hmcl.net/multiplayer/help.html#%E5%88%9B%E5%BB%BA%E6%96%B9"));
+                    // })
+                    // .addNavigationDrawerItem(item -> {
+                    // item.setTitle(i18n("multiplayer.help.4"));
+                    // item.setLeftGraphic(wrap(SVG.HELP_CIRCLE_OUTLINE));
+                    // item.setOnAction(e ->
+                    // FXUtils.openLink("https://docs.hmcl.net/multiplayer/help.html#%E5%8F%82%E4%B8%8E%E8%80%85"));
                     // })
                     .addNavigationDrawerItem(item -> {
                         item.setTitle(i18n("multiplayer.help.5"));
@@ -100,9 +104,10 @@ public class MultiplayerPageSkin extends DecoratorAnimatedPage.DecoratorAnimated
                         item.setOnAction(e -> FXUtils.openLink("https://afdian.net/a/loooo"));
                     })
                     // .addNavigationDrawerItem(item -> {
-                    //     item.setTitle(i18n("multiplayer.help.text"));
-                    //     item.setLeftGraphic(wrap(SVG.ROCKET_LAUNCH_OUTLINE));
-                    //     item.setOnAction(e -> FXUtils.openLink("https://docs.hmcl.net/multiplayer/text.html"));
+                    // item.setTitle(i18n("multiplayer.help.text"));
+                    // item.setLeftGraphic(wrap(SVG.ROCKET_LAUNCH_OUTLINE));
+                    // item.setOnAction(e ->
+                    // FXUtils.openLink("https://docs.hmcl.net/multiplayer/text.html"));
                     // })
                     .addNavigationDrawerItem(report -> {
                         report.setTitle(i18n("feedback"));
@@ -133,7 +138,8 @@ public class MultiplayerPageSkin extends DecoratorAnimatedPage.DecoratorAnimated
                         Label tokenTitle = new Label(i18n("multiplayer.token"));
                         BorderPane.setAlignment(tokenTitle, Pos.CENTER_LEFT);
                         tokenPane.setLeft(tokenTitle);
-                        // Token acts like password, we hide it here preventing users from accidentally leaking their token when taking screenshots.
+                        // Token acts like password, we hide it here preventing users from accidentally
+                        // leaking their token when taking screenshots.
                         JFXPasswordField tokenField = new JFXPasswordField();
                         BorderPane.setAlignment(tokenField, Pos.CENTER_LEFT);
                         BorderPane.setMargin(tokenField, new Insets(0, 8, 0, 8));
@@ -141,7 +147,8 @@ public class MultiplayerPageSkin extends DecoratorAnimatedPage.DecoratorAnimated
                         tokenField.textProperty().bindBidirectional(globalConfig().multiplayerTokenProperty());
                         tokenField.setPromptText(i18n("multiplayer.token.prompt"));
 
-                        Validator validator = new Validator("multiplayer.token.format_invalid", StringUtils::isAlphabeticOrNumber);
+                        Validator validator = new Validator("multiplayer.token.format_invalid",
+                                StringUtils::isAlphabeticOrNumber);
                         InvalidationListener listener = any -> tokenField.validate();
                         validator.getProperties().put(validator, listener);
                         tokenField.textProperty().addListener(new WeakInvalidationListener(listener));
@@ -175,9 +182,11 @@ public class MultiplayerPageSkin extends DecoratorAnimatedPage.DecoratorAnimated
                     BorderPane expirationPane = new BorderPane();
                     expirationPane.setLeft(new Label(i18n("multiplayer.session.expiration")));
                     Label expirationLabel = new Label();
-                    expirationLabel.textProperty().bind(Bindings.createStringBinding(() ->
-                                    control.getExpireTime() == null ? "" : Locales.SIMPLE_DATE_FORMAT.get().format(control.getExpireTime()),
-                            control.expireTimeProperty()));
+                    expirationLabel.textProperty()
+                            .bind(Bindings.createStringBinding(
+                                    () -> control.getExpireTime() == null ? ""
+                                            : Locales.SIMPLE_DATE_FORMAT.get().format(control.getExpireTime()),
+                                    control.expireTimeProperty()));
                     expirationPane.setRight(expirationLabel);
 
                     GridPane masterPane = new GridPane();
@@ -211,21 +220,23 @@ public class MultiplayerPageSkin extends DecoratorAnimatedPage.DecoratorAnimated
                         JFXTextField portTextField = new JFXTextField();
                         GridPane.setColumnSpan(portTextField, 2);
                         FXUtils.setValidateWhileTextChanged(portTextField, true);
-                        portTextField.getValidators().add(new Validator(i18n("multiplayer.master.port.validate"), (text) -> {
-                            Integer value = Lang.toIntOrNull(text);
-                            return value != null && 0 <= value && value <= 65535;
-                        }));
-                        portTextField.textProperty().bindBidirectional(control.portProperty(), new StringConverter<Number>() {
-                            @Override
-                            public String toString(Number object) {
-                                return Integer.toString(object.intValue());
-                            }
+                        portTextField.getValidators()
+                                .add(new Validator(i18n("multiplayer.master.port.validate"), (text) -> {
+                                    Integer value = Lang.toIntOrNull(text);
+                                    return value != null && 0 <= value && value <= 65535;
+                                }));
+                        portTextField.textProperty().bindBidirectional(control.portProperty(),
+                                new StringConverter<Number>() {
+                                    @Override
+                                    public String toString(Number object) {
+                                        return Integer.toString(object.intValue());
+                                    }
 
-                            @Override
-                            public Number fromString(String string) {
-                                return Lang.parseInt(string, 0);
-                            }
-                        });
+                                    @Override
+                                    public Number fromString(String string) {
+                                        return Lang.parseInt(string, 0);
+                                    }
+                                });
                         masterPane.addRow(2, portTitle, portTextField);
 
                         Label serverAddressTitle = new Label(i18n("multiplayer.master.server_address"));
@@ -285,8 +296,8 @@ public class MultiplayerPageSkin extends DecoratorAnimatedPage.DecoratorAnimated
 
                             Label addressTitle = new Label(i18n("multiplayer.slave.server_address"));
                             Label addressLabel = new Label();
-                            addressLabel.textProperty().bind(Bindings.createStringBinding(() ->
-                                            control.getBroadcaster() != null ? control.getBroadcaster().getAddress() : "",
+                            addressLabel.textProperty().bind(Bindings.createStringBinding(
+                                    () -> control.getBroadcaster() != null ? control.getBroadcaster().getAddress() : "",
                                     control.broadcasterProperty()));
 
                             JFXButton stopButton = new JFXButton(i18n("multiplayer.slave.server_address.stop"));
@@ -345,8 +356,7 @@ public class MultiplayerPageSkin extends DecoratorAnimatedPage.DecoratorAnimated
                     mainPane,
                     ComponentList.createComponentListTitle(i18n("multiplayer.persistence")),
                     ComponentList.createComponentListTitle(i18n("about")),
-                    thanksPane
-            );
+                    thanksPane);
         }
     }
 

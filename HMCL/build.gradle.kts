@@ -14,6 +14,7 @@ plugins {
 val isOfficial = System.getenv("HMCL_SIGNATURE_KEY") != null
         || (System.getenv("GITHUB_REPOSITORY_OWNER") == "xqzi" && System.getenv("GITHUB_BASE_REF").isNullOrEmpty())
 
+val jarBaseName = "PMCL"
 val buildNumber = System.getenv("BUILD_NUMBER")?.toInt().let { number ->
     val offset = System.getenv("BUILD_NUMBER_OFFSET")?.toInt() ?: 0
     if (number != null) {
@@ -99,6 +100,7 @@ tasks.getByName<JavaCompile>(java11.compileJavaTaskName) {
 
 tasks.jar {
     enabled = false
+    archiveBaseName.set(jarBaseName)
     dependsOn(tasks["shadowJar"])
 }
 
@@ -106,6 +108,7 @@ val jarPath = tasks.jar.get().archiveFile.get().asFile
 
 tasks.getByName<com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar>("shadowJar") {
     archiveClassifier.set(null as String?)
+    archiveBaseName.set(jarBaseName)
 
     exclude("**/package-info.class")
     exclude("META-INF/maven/**")
