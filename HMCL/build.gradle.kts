@@ -122,7 +122,7 @@ tasks.getByName<com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar>("sha
     manifest {
         attributes(
             "Created-By" to "Copyright(c) 2013-2023 qinzi.",
-            "Main-Class" to "org.qinzi.pmcl.Main",
+            "Main-Class" to "org.jackhuang.hmcl.Main",
             "Multi-Release" to "true",
             "Implementation-Version" to project.version,
             "Microsoft-Auth-Id" to microsoftAuthId,
