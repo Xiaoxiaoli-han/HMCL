@@ -353,7 +353,6 @@ public class MultiplayerPageSkin extends DecoratorAnimatedPage.DecoratorAnimated
 
             content.getChildren().setAll(
                     mainPane,
-                    ComponentList.createComponentListTitle(i18n("multiplayer.persistence")),
                     ComponentList.createComponentListTitle(i18n("about")),
                     thanksPane);
         }
