@@ -28,21 +28,24 @@ import java.nio.file.Paths;
  * Stores metadata about this application.
  */
 public final class Metadata {
-    private Metadata() {}
+    private Metadata() {
+    }
 
     public static final String NAME = "PMCL";
     public static final String FULL_NAME = "Play Minecraft! Launcher";
-    public static final String VERSION = System.getProperty("hmcl.version.override", JarUtils.getManifestAttribute("Implementation-Version", "@develop@"));
+    public static final String VERSION = System.getProperty("hmcl.version.override",
+            JarUtils.getManifestAttribute("Implementation-Version", "@develop@"));
 
     public static final String TITLE = NAME + " " + VERSION;
     public static final String FULL_TITLE = FULL_NAME + " v" + VERSION;
 
-    public static final String UPDATE_URL = System.getProperty("hmcl.update_source.override", "https://hmcl.huangyuhui.net/api/update_link");
-    public static final String CONTACT_URL = "https://docs.hmcl.net/help.html";
-    public static final String HELP_URL = "https://docs.hmcl.net/help.html";
-    public static final String CHANGELOG_URL = "https://docs.hmcl.net/changelog/";
-    public static final String PUBLISH_URL = "https://docs.hmcl.net";
-    public static final String EULA_URL = "https://docs.hmcl.net/eula.html";
+    public static final String UPDATE_URL = System.getProperty("hmcl.update_source.override",
+            "https://hmcl.huangyuhui.net/api/update_link");
+    public static final String CONTACT_URL = "https://pmcl.fun/help.html";
+    public static final String HELP_URL = "https://pmcl.fun/help.html";
+    public static final String CHANGELOG_URL = "https://pmcl.fun/changelog";
+    public static final String PUBLISH_URL = "https://pmcl.fun";
+    public static final String EULA_URL = "https://pmcl.fun/eula.html";
 
     public static final String BUILD_CHANNEL = JarUtils.getManifestAttribute("Build-Channel", "nightly");
     public static final String GITHUB_SHA = JarUtils.getManifestAttribute("GitHub-SHA", null);
@@ -58,7 +61,8 @@ public final class Metadata {
                 if (StringUtils.isNotBlank(xdgData)) {
                     HMCL_DIRECTORY = Paths.get(xdgData, "hmcl").toAbsolutePath();
                 } else {
-                    HMCL_DIRECTORY = Paths.get(System.getProperty("user.home", "."), ".local", "share", "hmcl").toAbsolutePath();
+                    HMCL_DIRECTORY = Paths.get(System.getProperty("user.home", "."), ".local", "share", "hmcl")
+                            .toAbsolutePath();
                 }
             } else {
                 HMCL_DIRECTORY = OperatingSystem.getWorkingDirectory("hmcl");

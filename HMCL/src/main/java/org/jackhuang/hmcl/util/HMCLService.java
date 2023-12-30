@@ -24,6 +24,6 @@ public final class HMCLService {
     }
 
     public static void openRedirectLink(String id) {
-        FXUtils.openLink("https://hmcl.huangyuhui.net/api/redirect/" + id);
+        FXUtils.openLink("https://pmcl.fun/to/" + id);
     }
 }

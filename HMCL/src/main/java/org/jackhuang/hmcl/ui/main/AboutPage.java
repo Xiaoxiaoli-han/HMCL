@@ -108,7 +108,7 @@ public class AboutPage extends StackPane {
             users.setImage(new Image("/assets/img/rainbow.png"));
             users.setTitle(i18n("about.thanks_to.users"));
             users.setSubtitle(i18n("about.thanks_to.users.statement"));
-            users.setExternalLink("https://pmcl.fun/sponsor");
+            users.setExternalLink("https://pmcl.fun/to/sponsor");
 
             thanks.getContent().setAll(hmcl, huanghongxun, yushijinhun, bangbang93, glavo, mcbbs, mcmod, redLnn,
                     contributors,
@@ -167,7 +167,7 @@ public class AboutPage extends StackPane {
             IconedTwoLineListItem copyright = new IconedTwoLineListItem();
             copyright.setTitle(i18n("about.copyright"));
             copyright.setSubtitle(i18n("about.copyright.statement"));
-            copyright.setExternalLink("https://hmcl.huangyuhui.net/about/");
+            copyright.setExternalLink("https://pmcl.fun/");
 
             IconedTwoLineListItem claim = new IconedTwoLineListItem();
             claim.setTitle(i18n("about.claim"));
@@ -177,7 +177,7 @@ public class AboutPage extends StackPane {
             IconedTwoLineListItem openSource = new IconedTwoLineListItem();
             openSource.setTitle(i18n("about.open_source"));
             openSource.setSubtitle(i18n("about.open_source.statement"));
-            openSource.setExternalLink("https://github.com/huanghongxun/HMCL");
+            openSource.setExternalLink("https://github.com/xqzi/PMCL");
 
             legal.getContent().setAll(copyright, claim, openSource);
         }

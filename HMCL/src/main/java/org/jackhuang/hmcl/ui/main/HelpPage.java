@@ -63,8 +63,9 @@ public class HelpPage extends SpinnerPane {
 
     private void loadHelp() {
         showSpinner();
-        Task.<List<HelpCategory>>supplyAsync(() -> HttpRequest.GET("https://docs.hmcl.net/index.json").getJson(new TypeToken<List<HelpCategory>>() {
-        }.getType()))
+        Task.<List<HelpCategory>>supplyAsync(
+                () -> HttpRequest.GET("https://pmcl.fun/index.json").getJson(new TypeToken<List<HelpCategory>>() {
+                }.getType()))
                 .thenAcceptAsync(Schedulers.javafx(), helpCategories -> {
                     for (HelpCategory category : helpCategories) {
                         ComponentList categoryPane = new ComponentList();

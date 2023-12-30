@@ -46,7 +46,7 @@ public class FeedbackPage extends SpinnerPane {
             users.setImage(new Image("/assets/img/rainbow.png"));
             users.setTitle(i18n("feedback.qq_group"));
             users.setSubtitle(i18n("feedback.qq_group.statement"));
-            users.setExternalLink("https://pmcl.fun/sponsor");
+            users.setExternalLink("https://pmcl.fun/to/sponsor");
 
             IconedTwoLineListItem github = new IconedTwoLineListItem();
             github.setImage(new Image("/assets/img/github.png"));

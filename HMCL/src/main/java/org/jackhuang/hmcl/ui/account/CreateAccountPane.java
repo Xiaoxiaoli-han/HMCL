@@ -337,7 +337,7 @@ public class CreateAccountPane extends JFXDialogLayout implements DialogAware {
                 hintPane.setSegment(i18n("account.methods.microsoft.snapshot"));
 
                 JFXHyperlink officialWebsite = new JFXHyperlink(i18n("account.methods.microsoft.snapshot.website"));
-                officialWebsite.setExternalLink("https://hmcl.huangyuhui.net");
+                officialWebsite.setExternalLink("https://pmcl.fun");
 
                 vbox.getChildren().setAll(hintPane, officialWebsite);
                 btnAccept.setDisable(true);

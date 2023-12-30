@@ -113,7 +113,7 @@ public class SponsorPage extends StackPane {
     }
 
     private void onSponsor() {
-        FXUtils.openLink("https://hmcl.huangyuhui.net/api/redirect/sponsor");
+        FXUtils.openLink("https://pmcl.fun/to/sponsor");
     }
 
     private void loadSponsorList() {
