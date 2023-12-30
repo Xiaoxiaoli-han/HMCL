@@ -99,7 +99,7 @@ public class MultiplayerPageSkin extends DecoratorAnimatedPage.DecoratorAnimated
                     // })
                     .addNavigationDrawerItem(item -> {
                         item.setTitle(i18n("multiplayer.help.5"));
-                        item.setLeftGraphic(wrap(SVG.HELP_CIRCLE_OUTLINE));
+                        item.setLeftGraphic(wrap(SVG.HAND_HEAR_OUTLINE));
                         item.setOnAction(e -> FXUtils.openLink("https://afdian.net/a/loooo"));
                     })
                     // .addNavigationDrawerItem(item -> {
