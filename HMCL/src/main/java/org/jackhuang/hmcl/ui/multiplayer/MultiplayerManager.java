@@ -18,7 +18,6 @@
 package org.jackhuang.hmcl.ui.multiplayer;
 
 import javafx.application.Platform;
-import com.google.gson.JsonParseException;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.BooleanBinding;
 import org.jackhuang.hmcl.Metadata;
