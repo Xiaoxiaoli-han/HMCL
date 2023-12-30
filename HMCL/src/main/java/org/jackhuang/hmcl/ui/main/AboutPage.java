@@ -86,6 +86,12 @@ public class AboutPage extends StackPane {
             redLnn.setImage(new Image("/assets/img/red_lnn.png"));
             redLnn.setSubtitle(i18n("about.thanks_to.red_lnn.statement"));
 
+            IconedTwoLineListItem mcbbs = new IconedTwoLineListItem();
+            mcbbs.setImage(new Image("/assets/img/chest.png"));
+            mcbbs.setTitle(i18n("about.thanks_to.mcbbs"));
+            mcbbs.setSubtitle(i18n("about.thanks_to.mcbbs.statement"));
+            mcbbs.setExternalLink("https://www.mcbbs.net/");
+
             IconedTwoLineListItem mcmod = new IconedTwoLineListItem();
             mcmod.setImage(new Image("/assets/img/mcmod.png"));
             mcmod.setTitle(i18n("about.thanks_to.mcmod"));
