@@ -51,7 +51,7 @@ void FindJavaInDirAndLaunchJVM(const std::wstring &baseDir, const std::wstring &
 }
 
 void OpenHelpPage() {
-    ShellExecute(0, 0, L"https://docs.hmcl.net/help.html", 0, 0, SW_SHOW);
+    ShellExecute(0, 0, L"https://pmcl.fun/help.html", 0, 0, SW_SHOW);
 }
 
 int APIENTRY wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
@@ -161,14 +161,14 @@ error:
 
   if (isWin7OrLater) {
     if (isARM64) {
-      downloadLink = L"https://docs.hmcl.net/downloads/windows/arm64.html";
+      downloadLink = L"https://pmcl.fun/downloads/windows/arm64.html";
     } if (isX64) {
-      downloadLink = L"https://docs.hmcl.net/downloads/windows/x86_64.html";
+      downloadLink = L"https://pmcl.fun/downloads/windows/x86_64.html";
     } else {
-      downloadLink = L"https://docs.hmcl.net/downloads/windows/x86.html";
+      downloadLink = L"https://pmcl.fun/downloads/windows/x86.html";
     }
   } else {
-    downloadLink = L"https://docs.hmcl.net/downloads/java.html";
+    downloadLink = L"https://pmcl.fun/downloads/java.html";
   }
 
   if (IDOK == MessageBox(NULL, useChinese ? ERROR_PROMPT_ZH : ERROR_PROMPT, useChinese ? ERROR_TITLE_ZH : ERROR_TITLE, MB_ICONWARNING | MB_OKCANCEL)) {

@@ -48,8 +48,13 @@ import org.jackhuang.hmcl.util.Lang;
 
 public class DecoratorSkin extends SkinBase<Decorator> {
     private static final PseudoClass TRANSPARENT = PseudoClass.getPseudoClass("transparent");
-    private static final SVGGlyph minus = Lang.apply(new SVGGlyph(0, "MINUS", "M804.571 420.571v109.714q0 22.857-16 38.857t-38.857 16h-694.857q-22.857 0-38.857-16t-16-38.857v-109.714q0-22.857 16-38.857t38.857-16h694.857q22.857 0 38.857 16t16 38.857z", Color.WHITE),
-        glyph -> { glyph.setSize(12, 2); glyph.setTranslateY(4); });
+    private static final SVGGlyph minus = Lang.apply(new SVGGlyph(0, "MINUS",
+            "M804.571 420.571v109.714q0 22.857-16 38.857t-38.857 16h-694.857q-22.857 0-38.857-16t-16-38.857v-109.714q0-22.857 16-38.857t38.857-16h694.857q22.857 0 38.857 16t16 38.857z",
+            Color.WHITE),
+            glyph -> {
+                glyph.setSize(12, 2);
+                glyph.setTranslateY(4);
+            });
 
     private final StackPane root, parent;
     private final StackPane titleContainer;
@@ -103,7 +108,8 @@ public class DecoratorSkin extends SkinBase<Decorator> {
 
         parent.getChildren().add(wrapper);
 
-        // center node with an animation layer at bottom, a container layer at middle and a "welcome" layer at top.
+        // center node with an animation layer at bottom, a container layer at middle
+        // and a "welcome" layer at top.
         StackPane container = new StackPane();
         FXUtils.setOverflowHidden(container);
 
@@ -167,8 +173,11 @@ public class DecoratorSkin extends SkinBase<Decorator> {
             navBarPane = new TransitionPane();
             navBarPane.setId("decoratorTitleTransitionPane");
             FXUtils.onChangeAndOperate(skinnable.stateProperty(), s -> {
-                if (s == null) return;
-                Node node = createNavBar(skinnable, s.getLeftPaneWidth(), s.isBackable(), skinnable.canCloseProperty().get(), skinnable.showCloseAsHomeProperty().get(), s.isRefreshable(), s.getTitle(), s.getTitleNode());
+                if (s == null)
+                    return;
+                Node node = createNavBar(skinnable, s.getLeftPaneWidth(), s.isBackable(),
+                        skinnable.canCloseProperty().get(), skinnable.showCloseAsHomeProperty().get(),
+                        s.isRefreshable(), s.getTitle(), s.getTitleNode());
                 if (s.isAnimate()) {
                     AnimationProducer animation;
                     if (skinnable.getNavigationDirection() == Navigation.NavigationDirection.NEXT) {
@@ -197,7 +206,7 @@ public class DecoratorSkin extends SkinBase<Decorator> {
                 JFXButton btnHelp = new JFXButton();
                 btnHelp.setGraphic(SVG.HELP_CIRCLE_OUTLINE.createIcon(Theme.foregroundFillBinding(), -1, -1));
                 btnHelp.getStyleClass().add("jfx-decorator-button");
-                btnHelp.setOnAction(e -> FXUtils.openLink("https://docs.hmcl.net/help.html"));
+                btnHelp.setOnAction(e -> FXUtils.openLink("https://pmcl.fun/help.html"));
 
                 JFXButton btnMin = new JFXButton();
                 StackPane pane = new StackPane(minus);
@@ -225,7 +234,8 @@ public class DecoratorSkin extends SkinBase<Decorator> {
         getChildren().add(root);
     }
 
-    private Node createNavBar(Decorator skinnable, double leftPaneWidth, boolean canBack, boolean canClose, boolean showCloseAsHome, boolean canRefresh, String title, Node titleNode) {
+    private Node createNavBar(Decorator skinnable, double leftPaneWidth, boolean canBack, boolean canClose,
+            boolean showCloseAsHome, boolean canRefresh, String title, Node titleNode) {
         BorderPane navBar = new BorderPane();
         {
             HBox navLeft = new HBox();

@@ -77,25 +77,25 @@ public class MultiplayerPageSkin extends DecoratorAnimatedPage.DecoratorAnimated
                     // item.setTitle(i18n("multiplayer.help.1"));
                     // item.setLeftGraphic(wrap(SVG.HELP_CIRCLE_OUTLINE));
                     // item.setOnAction(e ->
-                    // FXUtils.openLink("https://docs.hmcl.net/multiplayer/admin.html"));
+                    // FXUtils.openLink("https://pmcl.fun/multiplayer/admin.html"));
                     // })
                     // .addNavigationDrawerItem(item -> {
                     // item.setTitle(i18n("multiplayer.help.2"));
                     // item.setLeftGraphic(wrap(SVG.HELP_CIRCLE_OUTLINE));
                     // item.setOnAction(e ->
-                    // FXUtils.openLink("https://docs.hmcl.net/multiplayer/help.html"));
+                    // FXUtils.openLink("https://pmcl.fun/multiplayer/help.html"));
                     // })
                     // .addNavigationDrawerItem(item -> {
                     // item.setTitle(i18n("multiplayer.help.3"));
                     // item.setLeftGraphic(wrap(SVG.HELP_CIRCLE_OUTLINE));
                     // item.setOnAction(e ->
-                    // FXUtils.openLink("https://docs.hmcl.net/multiplayer/help.html#%E5%88%9B%E5%BB%BA%E6%96%B9"));
+                    // FXUtils.openLink("https://pmcl.fun/multiplayer/help.html#%E5%88%9B%E5%BB%BA%E6%96%B9"));
                     // })
                     // .addNavigationDrawerItem(item -> {
                     // item.setTitle(i18n("multiplayer.help.4"));
                     // item.setLeftGraphic(wrap(SVG.HELP_CIRCLE_OUTLINE));
                     // item.setOnAction(e ->
-                    // FXUtils.openLink("https://docs.hmcl.net/multiplayer/help.html#%E5%8F%82%E4%B8%8E%E8%80%85"));
+                    // FXUtils.openLink("https://pmcl.fun/multiplayer/help.html#%E5%8F%82%E4%B8%8E%E8%80%85"));
                     // })
                     .addNavigationDrawerItem(item -> {
                         item.setTitle(i18n("multiplayer.help.5"));
@@ -106,7 +106,7 @@ public class MultiplayerPageSkin extends DecoratorAnimatedPage.DecoratorAnimated
                     // item.setTitle(i18n("multiplayer.help.text"));
                     // item.setLeftGraphic(wrap(SVG.ROCKET_LAUNCH_OUTLINE));
                     // item.setOnAction(e ->
-                    // FXUtils.openLink("https://docs.hmcl.net/multiplayer/text.html"));
+                    // FXUtils.openLink("https://pmcl.fun/multiplayer/text.html"));
                     // })
                     .addNavigationDrawerItem(report -> {
                         report.setTitle(i18n("feedback"));
