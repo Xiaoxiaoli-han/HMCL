@@ -57,7 +57,8 @@ import static org.jackhuang.hmcl.util.Logging.LOG;
 import static org.jackhuang.hmcl.util.i18n.I18n.i18n;
 
 public class MultiplayerPage extends DecoratorAnimatedPage implements DecoratorPage, PageAware {
-    private final ReadOnlyObjectWrapper<State> state = new ReadOnlyObjectWrapper<>(State.fromTitle(i18n("multiplayer")));
+    private final ReadOnlyObjectWrapper<State> state = new ReadOnlyObjectWrapper<>(
+            State.fromTitle(i18n("multiplayer")));
 
     private final ReadOnlyObjectWrapper<MultiplayerManager.HiperSession> session = new ReadOnlyObjectWrapper<>();
     private final IntegerProperty port = new SimpleIntegerProperty();
@@ -151,8 +152,7 @@ public class MultiplayerPage extends DecoratorAnimatedPage implements DecoratorP
                         offlineAccount.getDownloader(),
                         offlineAccount.getUsername(),
                         offlineAccount.getUUID(),
-                        offlineAccount.getSkin()
-                ));
+                        offlineAccount.getSkin()));
             }
         });
     }
@@ -194,10 +194,12 @@ public class MultiplayerPage extends DecoratorAnimatedPage implements DecoratorP
                             if (exception instanceof CancellationException) {
                                 Controllers.showToast(i18n("message.cancelled"));
                             } else if (exception instanceof MultiplayerManager.HiperUnsupportedPlatformException) {
-                                Controllers.dialog(i18n("multiplayer.download.unsupported"), i18n("install.failed.downloading"), MessageDialogPane.MessageType.ERROR);
+                                Controllers.dialog(i18n("multiplayer.download.unsupported"),
+                                        i18n("install.failed.downloading"), MessageDialogPane.MessageType.ERROR);
                                 fireEvent(new PageCloseEvent());
                             } else {
-                                Controllers.dialog(DownloadProviders.localizeErrorMessage(exception), i18n("install.failed.downloading"), MessageDialogPane.MessageType.ERROR);
+                                Controllers.dialog(DownloadProviders.localizeErrorMessage(exception),
+                                        i18n("install.failed.downloading"), MessageDialogPane.MessageType.ERROR);
                                 fireEvent(new PageCloseEvent());
                             }
                         } else {
@@ -242,7 +244,8 @@ public class MultiplayerPage extends DecoratorAnimatedPage implements DecoratorP
                     onValidUntil = session.onValidUntil().registerWeak(this::onValidUntil);
                 }, Schedulers.javafx())
                 .exceptionally(throwable -> {
-                    runInFX(() -> Controllers.dialog(localizeErrorMessage(throwable), null, MessageDialogPane.MessageType.ERROR));
+                    runInFX(() -> Controllers.dialog(localizeErrorMessage(throwable), null,
+                            MessageDialogPane.MessageType.ERROR));
                     return null;
                 });
     }
@@ -304,34 +307,47 @@ public class MultiplayerPage extends DecoratorAnimatedPage implements DecoratorP
                     break;
                 case MultiplayerManager.HiperExitEvent.NO_SUDO_PRIVILEGES:
                     if (OperatingSystem.CURRENT_OS == OperatingSystem.WINDOWS) {
-                        Controllers.confirm(i18n("multiplayer.error.failed_sudo.windows"), null, MessageDialogPane.MessageType.WARNING, () -> {
-                            FXUtils.openLink("https://afdian.net/a/loooo?tab=feed");
-                        }, null);
+                        Controllers.confirm(i18n("multiplayer.error.failed_sudo.windows"), null,
+                                MessageDialogPane.MessageType.WARNING, () -> {
+                                    FXUtils.openLink("https://afdian.net/a/loooo?tab=feed");
+                                }, null);
                     } else if (OperatingSystem.CURRENT_OS == OperatingSystem.LINUX) {
-                        Controllers.dialog(i18n("multiplayer.error.failed_sudo.linux", MultiplayerManager.HIPER_PATH.toString()), null, MessageDialogPane.MessageType.WARNING);
+                        Controllers.dialog(
+                                i18n("multiplayer.error.failed_sudo.linux", MultiplayerManager.HIPER_PATH.toString()),
+                                null, MessageDialogPane.MessageType.WARNING);
                     } else if (OperatingSystem.CURRENT_OS == OperatingSystem.OSX) {
-                        Controllers.confirm(i18n("multiplayer.error.failed_sudo.mac"), null, MessageDialogPane.MessageType.INFO, () -> {
-                            try {
-                                String text = "%hmcl-hiper ALL=(ALL:ALL) NOPASSWD: " + MultiplayerManager.HIPER_PATH.toString().replaceAll("[ @!(),:=\\\\]", "\\\\$0") + "\n";
+                        Controllers.confirm(i18n("multiplayer.error.failed_sudo.mac"), null,
+                                MessageDialogPane.MessageType.INFO, () -> {
+                                    try {
+                                        String text = "%hmcl-hiper ALL=(ALL:ALL) NOPASSWD: "
+                                                + MultiplayerManager.HIPER_PATH.toString().replaceAll("[ @!(),:=\\\\]",
+                                                        "\\\\$0")
+                                                + "\n";
 
-                                File sudoersTmp = File.createTempFile("sudoer", ".tmp");
-                                sudoersTmp.deleteOnExit();
-                                FileUtils.writeText(sudoersTmp, text);
+                                        File sudoersTmp = File.createTempFile("sudoer", ".tmp");
+                                        sudoersTmp.deleteOnExit();
+                                        FileUtils.writeText(sudoersTmp, text);
 
-                                SystemUtils.callExternalProcess(
-                                        "osascript", "-e", String.format("do shell script \"%s\" with administrator privileges", String.join(";",
-                                                "dscl . create /Groups/hmcl-hiper PrimaryGroupID 758",
-                                                "dscl . merge /Groups/hmcl-hiper GroupMembership " + CommandBuilder.toShellStringLiteral(System.getProperty("user.name")) + "",
-                                                "mkdir -p /private/etc/sudoers.d",
-                                                "mv -f " + CommandBuilder.toShellStringLiteral(sudoersTmp.toString()) + " /private/etc/sudoers.d/hmcl-hiper",
-                                                "chown root /private/etc/sudoers.d/hmcl-hiper",
-                                                "chmod 0440 /private/etc/sudoers.d/hmcl-hiper"
-                                        ).replaceAll("[\\\\\"]", "\\\\$0"))
-                                );
-                            } catch (Throwable e) {
-                                LOG.log(Level.WARNING, "Failed to modify sudoers", e);
-                            }
-                        }, null);
+                                        SystemUtils.callExternalProcess(
+                                                "osascript", "-e",
+                                                String.format("do shell script \"%s\" with administrator privileges",
+                                                        String.join(";",
+                                                                "dscl . create /Groups/hmcl-hiper PrimaryGroupID 758",
+                                                                "dscl . merge /Groups/hmcl-hiper GroupMembership "
+                                                                        + CommandBuilder.toShellStringLiteral(
+                                                                                System.getProperty("user.name"))
+                                                                        + "",
+                                                                "mkdir -p /private/etc/sudoers.d",
+                                                                "mv -f " + CommandBuilder
+                                                                        .toShellStringLiteral(sudoersTmp.toString())
+                                                                        + " /private/etc/sudoers.d/hmcl-hiper",
+                                                                "chown root /private/etc/sudoers.d/hmcl-hiper",
+                                                                "chmod 0440 /private/etc/sudoers.d/hmcl-hiper")
+                                                                .replaceAll("[\\\\\"]", "\\\\$0")));
+                                    } catch (Throwable e) {
+                                        LOG.log(Level.WARNING, "Failed to modify sudoers", e);
+                                    }
+                                }, null);
                     }
                     break;
                 case MultiplayerManager.HiperExitEvent.INTERRUPTED:

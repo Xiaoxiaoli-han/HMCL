@@ -25,7 +25,8 @@ import java.util.UUID;
 
 public class MultiplayerOfflineAccount extends OfflineAccount {
 
-    public MultiplayerOfflineAccount(AuthlibInjectorArtifactProvider downloader, String username, UUID uuid, Skin skin) {
+    public MultiplayerOfflineAccount(AuthlibInjectorArtifactProvider downloader, String username, UUID uuid,
+            Skin skin) {
         super(downloader, username, uuid, skin);
     }
 

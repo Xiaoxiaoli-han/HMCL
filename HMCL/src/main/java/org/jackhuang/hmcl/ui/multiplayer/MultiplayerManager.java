@@ -18,7 +18,6 @@
 package org.jackhuang.hmcl.ui.multiplayer;
 
 import javafx.application.Platform;
-import com.google.gson.JsonParseException;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.BooleanBinding;
 import org.jackhuang.hmcl.Metadata;
@@ -79,14 +78,12 @@ public final class MultiplayerManager {
             pair(Architecture.MIPS64EL, "mips64le"),
             pair(Architecture.PPC64LE, "ppc64le"),
             pair(Architecture.RISCV64, "riscv64"),
-            pair(Architecture.MIPSEL, "mipsle")
-    );
+            pair(Architecture.MIPSEL, "mipsle"));
 
     private static final Map<OperatingSystem, String> osMap = mapOf(
             pair(OperatingSystem.LINUX, "linux"),
             pair(OperatingSystem.WINDOWS, "windows"),
-            pair(OperatingSystem.OSX, "darwin")
-    );
+            pair(OperatingSystem.OSX, "darwin"));
 
     private static final String HIPER_TARGET_NAME = String.format("%s-%s",
             osMap.getOrDefault(OperatingSystem.CURRENT_OS, "windows"),
@@ -95,8 +92,10 @@ public final class MultiplayerManager {
     private static final String GSUDO_VERSION = "1.7.1";
     private static final String GSUDO_TARGET_ARCH = Architecture.SYSTEM_ARCH == Architecture.X86_64 ? "amd64" : "x86";
     private static final String GSUDO_FILE_NAME = "gsudo.exe";
-    private static final String GSUDO_DOWNLOAD_URL = "https://gitcode.net/glavo/gsudo-release/-/raw/75c952ea3afe8792b0db4fe9bab87d41b21e5895/" + GSUDO_TARGET_ARCH + "/" + GSUDO_FILE_NAME;
-    private static final Path GSUDO_LOCAL_FILE = Metadata.HMCL_DIRECTORY.resolve("libraries").resolve("gsudo").resolve("gsudo").resolve(GSUDO_VERSION).resolve(GSUDO_TARGET_ARCH).resolve(GSUDO_FILE_NAME);
+    private static final String GSUDO_DOWNLOAD_URL = "https://gitcode.net/glavo/gsudo-release/-/raw/75c952ea3afe8792b0db4fe9bab87d41b21e5895/"
+            + GSUDO_TARGET_ARCH + "/" + GSUDO_FILE_NAME;
+    private static final Path GSUDO_LOCAL_FILE = Metadata.HMCL_DIRECTORY.resolve("libraries").resolve("gsudo")
+            .resolve("gsudo").resolve(GSUDO_VERSION).resolve(GSUDO_TARGET_ARCH).resolve(GSUDO_FILE_NAME);
     private static final boolean USE_GSUDO;
 
     static final boolean IS_ADMINISTRATOR;
@@ -114,7 +113,7 @@ public final class MultiplayerManager {
         boolean isAdministrator = false;
         if (OperatingSystem.CURRENT_OS == OperatingSystem.WINDOWS) {
             try {
-                Process process = Runtime.getRuntime().exec(new String[]{"net.exe", "session"});
+                Process process = Runtime.getRuntime().exec(new String[] { "net.exe", "session" });
                 if (!process.waitFor(1, TimeUnit.SECONDS)) {
                     process.destroy();
                 } else {
@@ -161,7 +160,8 @@ public final class MultiplayerManager {
     public static Task<Void> downloadHiper() {
         return Task.fromCompletableFuture(getPackagesHash()).thenComposeAsync(packagesHash -> {
 
-            BiFunction<String, String, FileDownloadTask> getFileDownloadTask = (String remotePath, String localFileName) -> {
+            BiFunction<String, String, FileDownloadTask> getFileDownloadTask = (String remotePath,
+                    String localFileName) -> {
                 String hash = packagesHash.get(remotePath);
                 return new FileDownloadTask(
                         NetworkUtils.toURL(String.format("%s%s", HIPER_DOWNLOAD_URL, remotePath)),
@@ -178,21 +178,23 @@ public final class MultiplayerManager {
 
                 tasks.add(getFileDownloadTask.apply(String.format("%s/hiper.exe", HIPER_TARGET_NAME), "hiper.exe"));
                 tasks.add(getFileDownloadTask.apply(String.format("%s/wintun.dll", HIPER_TARGET_NAME), "wintun.dll"));
-                // tasks.add(getFileDownloadTask.apply("tap-windows-9.21.2.exe", "tap-windows-9.21.2.exe"));
+                // tasks.add(getFileDownloadTask.apply("tap-windows-9.21.2.exe",
+                // "tap-windows-9.21.2.exe"));
                 if (USE_GSUDO)
                     tasks.add(new FileDownloadTask(
                             NetworkUtils.toURL(GSUDO_DOWNLOAD_URL),
                             GSUDO_LOCAL_FILE.toFile(),
-                            new FileDownloadTask.IntegrityCheck("SHA-1", packagesHash.get(GSUDO_FILE_NAME))
-                    ));
+                            new FileDownloadTask.IntegrityCheck("SHA-1", packagesHash.get(GSUDO_FILE_NAME))));
             } else {
                 if (!packagesHash.containsKey(String.format("%s/hiper", HIPER_TARGET_NAME))) {
                     throw new HiperUnsupportedPlatformException();
                 }
-                tasks = Collections.singletonList(getFileDownloadTask.apply(String.format("%s/hiper", HIPER_TARGET_NAME), "hiper"));
+                tasks = Collections.singletonList(
+                        getFileDownloadTask.apply(String.format("%s/hiper", HIPER_TARGET_NAME), "hiper"));
             }
             return Task.allOf(tasks).thenRunAsync(() -> {
-                if (OperatingSystem.CURRENT_OS == OperatingSystem.LINUX || OperatingSystem.CURRENT_OS == OperatingSystem.OSX) {
+                if (OperatingSystem.CURRENT_OS == OperatingSystem.LINUX
+                        || OperatingSystem.CURRENT_OS == OperatingSystem.OSX) {
                     Set<PosixFilePermission> perm = Files.getPosixFilePermissions(HIPER_PATH);
                     perm.add(PosixFilePermission.OWNER_EXECUTE);
                     Files.setPosixFilePermissions(HIPER_PATH, perm);
@@ -206,13 +208,17 @@ public final class MultiplayerManager {
             CompletableFuture<Void> future = new CompletableFuture<>();
             try {
                 if (OperatingSystem.CURRENT_OS == OperatingSystem.WINDOWS) {
-                    verifyChecksum(getHiperLocalDirectory().resolve("hiper.exe"), "SHA-1", packagesHash.get(String.format("%s/hiper.exe", HIPER_TARGET_NAME)));
-                    verifyChecksum(getHiperLocalDirectory().resolve("wintun.dll"), "SHA-1", packagesHash.get(String.format("%s/wintun.dll", HIPER_TARGET_NAME)));
-                    // verifyChecksumAndDeleteIfNotMatched(getHiperLocalDirectory().resolve("tap-windows-9.21.2.exe"), packagesHash.get("tap-windows-9.21.2.exe"));
+                    verifyChecksum(getHiperLocalDirectory().resolve("hiper.exe"), "SHA-1",
+                            packagesHash.get(String.format("%s/hiper.exe", HIPER_TARGET_NAME)));
+                    verifyChecksum(getHiperLocalDirectory().resolve("wintun.dll"), "SHA-1",
+                            packagesHash.get(String.format("%s/wintun.dll", HIPER_TARGET_NAME)));
+                    // verifyChecksumAndDeleteIfNotMatched(getHiperLocalDirectory().resolve("tap-windows-9.21.2.exe"),
+                    // packagesHash.get("tap-windows-9.21.2.exe"));
                     if (USE_GSUDO)
                         verifyChecksum(GSUDO_LOCAL_FILE, "SHA-1", packagesHash.get(GSUDO_FILE_NAME));
                 } else {
-                    verifyChecksum(getHiperLocalDirectory().resolve("hiper"), "SHA-1", packagesHash.get(String.format("%s/hiper", HIPER_TARGET_NAME)));
+                    verifyChecksum(getHiperLocalDirectory().resolve("hiper"), "SHA-1",
+                            packagesHash.get(String.format("%s/hiper", HIPER_TARGET_NAME)));
                 }
 
                 future.complete(null);
@@ -229,29 +235,30 @@ public final class MultiplayerManager {
             return future;
         }).thenApplyAsync(wrap(ignored -> {
 
-            String[] commands = new String[]{HIPER_PATH.toString(), "-g", token};
+            String[] commands = new String[] { HIPER_PATH.toString(), "-g", token };
 
             if (!IS_ADMINISTRATOR) {
                 switch (OperatingSystem.CURRENT_OS) {
                     case WINDOWS:
                         if (USE_GSUDO)
-                            commands = new String[]{GSUDO_LOCAL_FILE.toString(), HIPER_PATH.toString(), "-g", token};
+                            commands = new String[] { GSUDO_LOCAL_FILE.toString(), HIPER_PATH.toString(), "-g", token };
                         break;
                     case LINUX:
                         String askpass = System.getProperty("hmcl.askpass", System.getenv("HMCL_ASKPASS"));
                         if ("user".equalsIgnoreCase(askpass))
-                            commands = new String[]{"sudo", "-A", HIPER_PATH.toString(), "-g", token};
+                            commands = new String[] { "sudo", "-A", HIPER_PATH.toString(), "-g", token };
                         else if ("false".equalsIgnoreCase(askpass))
-                            commands = new String[]{"sudo", "--non-interactive", HIPER_PATH.toString(), "-g", token};
+                            commands = new String[] { "sudo", "--non-interactive", HIPER_PATH.toString(), "-g", token };
                         else {
                             if (Files.exists(Paths.get("/usr/bin/pkexec")))
-                                commands = new String[]{"/usr/bin/pkexec", HIPER_PATH.toString(), "-g", token};
+                                commands = new String[] { "/usr/bin/pkexec", HIPER_PATH.toString(), "-g", token };
                             else
-                                commands = new String[]{"sudo", "--non-interactive", HIPER_PATH.toString(), "-g", token};
+                                commands = new String[] { "sudo", "--non-interactive", HIPER_PATH.toString(), "-g",
+                                        token };
                         }
                         break;
                     case OSX:
-                        commands = new String[]{"sudo", "--non-interactive", HIPER_PATH.toString(), "-g", token};
+                        commands = new String[] { "sudo", "--non-interactive", HIPER_PATH.toString(), "-g", token };
                         break;
                 }
             }
@@ -298,18 +305,19 @@ public final class MultiplayerManager {
         }
 
         private void onLog(String log) {
-                LOG.warning("[HiPer] " + log);
-                if (log.startsWith("failed to load config"))
-                    error = HiperExitEvent.INVALID_CONFIGURATION;
-                else if (log.startsWith("sudo: ") || log.startsWith("Error getting authority") || log.startsWith("Error: An error occurred trying to start process"))
-                    error = HiperExitEvent.NO_SUDO_PRIVILEGES;
-                else if (log.startsWith("Failed to write to log, can't rename log file")) {
-                    error = HiperExitEvent.NO_SUDO_PRIVILEGES;
-                    stop();
-                }else if (log.startsWith("ip:")) {
-                        Optional<String> ip = tryCast(log.substring(4), String.class);
-                        ip.ifPresent(s -> onIPAllocated.fireEvent(new HiperIPEvent(this, s)));
-                }
+            LOG.warning("[HiPer] " + log);
+            if (log.startsWith("failed to load config"))
+                error = HiperExitEvent.INVALID_CONFIGURATION;
+            else if (log.startsWith("sudo: ") || log.startsWith("Error getting authority")
+                    || log.startsWith("Error: An error occurred trying to start process"))
+                error = HiperExitEvent.NO_SUDO_PRIVILEGES;
+            else if (log.startsWith("Failed to write to log, can't rename log file")) {
+                error = HiperExitEvent.NO_SUDO_PRIVILEGES;
+                stop();
+            } else if (log.startsWith("ip:")) {
+                Optional<String> ip = tryCast(log.substring(4), String.class);
+                ip.ifPresent(s -> onIPAllocated.fireEvent(new HiperIPEvent(this, s)));
+            }
         }
 
         private void waitFor() {
