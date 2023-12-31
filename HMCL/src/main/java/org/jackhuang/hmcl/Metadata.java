@@ -40,7 +40,7 @@ public final class Metadata {
     public static final String FULL_TITLE = FULL_NAME + " v" + VERSION;
 
     public static final String UPDATE_URL = System.getProperty("hmcl.update_source.override",
-            "https://hmcl.huangyuhui.net/api/update_link");
+            "https://pmcl.fun/version.json");
     public static final String CONTACT_URL = "https://pmcl.fun/help.html";
     public static final String HELP_URL = "https://pmcl.fun/help.html";
     public static final String CHANGELOG_URL = "https://pmcl.fun/changelog";
