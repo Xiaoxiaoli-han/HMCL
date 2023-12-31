@@ -39,8 +39,8 @@ public final class Metadata {
     public static final String TITLE = NAME + " " + VERSION;
     public static final String FULL_TITLE = FULL_NAME + " v" + VERSION;
 
-    public static final String UPDATE_URL = System.getProperty("hmcl.update_source.override",
-            "https://pmcl.fun/version.json");
+    public static final String HMCL_UPDATE_URL = System.getProperty("hmcl.hmcl_update_source.override", "https://pmcl.fun/version.json");
+    public static final String RESOURCE_UPDATE_URL = System.getProperty("hmcl.resource_update_source.override", "https://hmcl.huangyuhui.net/api/dynamic_remote_resource/update_link");
     public static final String CONTACT_URL = "https://pmcl.fun/help.html";
     public static final String HELP_URL = "https://pmcl.fun/help.html";
     public static final String CHANGELOG_URL = "https://pmcl.fun/changelog";
