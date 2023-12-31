@@ -1,6 +1,9 @@
 # 🎮 Play Minecraft! Launcher 🎉
 
 [![Build Status](https://github.com/xqzi/HMCL/actions/workflows/gradle.yml/badge.svg)](https://github.com/xqzi/HMCL/actions/workflows/gradle.yml)
+[![Check Style](https://github.com/xqzi/PMCL/actions/workflows/check-style.yml/badge.svg)](https://github.com/xqzi/PMCL/actions/workflows/check-style.yml)
+[![Check Translations](https://github.com/xqzi/PMCL/actions/workflows/check-translations.yml/badge.svg)](https://github.com/xqzi/PMCL/actions/workflows/check-translations.yml)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fxqzi%2FPMCL.svg?type=small)](https://app.fossa.com/projects/git%2Bgithub.com%2Fxqzi%2FPMCL?ref=badge_small)
 
 ## 简介
 
