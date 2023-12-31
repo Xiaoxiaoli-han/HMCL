@@ -78,7 +78,7 @@ public final class Main {
     }
 
     private static void initIcon() {
-        java.awt.Image image = java.awt.Toolkit.getDefaultToolkit().getImage(Main.class.getResource("/assets/img/icon@8x.png"));
+        java.awt.Image image = java.awt.Toolkit.getDefaultToolkit().getImage(Main.class.getResource("/assets/img/icon@origin.png"));
         AwtUtils.setAppleIcon(image);
     }
 
