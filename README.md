@@ -22,7 +22,7 @@ PMCL 有着强大的跨平台能力. 它不仅支持 Windows、Linux、macOS 等
 
 ## 开源协议
 
-该程序遵循 [HMCL 的开源协议](https://github.com/huanghongxun/HMCL/blob/javafx/LICENSE)的情况下下发布, 同时附有额外的条款.
+该程序遵循 [HMCL 的开源协议](https://github.com/huanghongxun/HMCL/blob/javafx/LICENSE)的情况下发布, 同时附有额外的条款.
 
 ### 附加条款
 
