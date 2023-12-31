@@ -81,3 +81,7 @@ PMCL 有着强大的跨平台能力. 它不仅支持 Windows、Linux、macOS 等
 | `-Dhmcl.native.encoding=<encoding>`          | 覆盖原生编码.                                                                                         |
 | `-Dhmcl.microsoft.auth.id=<App ID>`          | 覆盖 Microsoft OAuth App ID.                                                                      |
 | `-Dhmcl.microsoft.auth.secret=<App Secret>`  | 覆盖 Microsoft OAuth App 密钥.                                                                      |
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fxqzi%2FPMCL.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fxqzi%2FPMCL?ref=badge_large)
