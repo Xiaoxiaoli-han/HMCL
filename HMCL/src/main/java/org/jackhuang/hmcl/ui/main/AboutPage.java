@@ -24,6 +24,7 @@ import javafx.scene.layout.VBox;
 import org.jackhuang.hmcl.Metadata;
 import org.jackhuang.hmcl.ui.FXUtils;
 import org.jackhuang.hmcl.ui.construct.ComponentList;
+import static org.jackhuang.hmcl.ui.FXUtils.newBuiltinImage;
 import org.jackhuang.hmcl.ui.construct.IconedTwoLineListItem;
 
 import static org.jackhuang.hmcl.util.i18n.I18n.i18n;
