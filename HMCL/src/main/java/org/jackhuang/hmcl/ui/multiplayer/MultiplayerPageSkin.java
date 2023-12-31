@@ -67,47 +67,42 @@ public class MultiplayerPageSkin extends DecoratorAnimatedPage.DecoratorAnimated
                             control.launchGame();
                         });
                     })
-                    .startCategory(i18n("help"))
-                    .addNavigationDrawerItem(item -> {
-                        item.setTitle(i18n("help"));
-                        item.setLeftGraphic(wrap(SVG.HELP_CIRCLE_OUTLINE));
-                        item.setOnAction(e -> FXUtils.openLink("https://afdian.net/a/loooo?tab=feed"));
-                    })
+                    // .startCategory(i18n("help"))
                     // .addNavigationDrawerItem(item -> {
-                    // item.setTitle(i18n("multiplayer.help.1"));
+                    // item.setTitle(i18n("help"));
                     // item.setLeftGraphic(wrap(SVG.HELP_CIRCLE_OUTLINE));
-                    // item.setOnAction(e ->
-                    // FXUtils.openLink("https://pmcl.fun/multiplayer/admin.html"));
-                    // })
-                    // .addNavigationDrawerItem(item -> {
-                    // item.setTitle(i18n("multiplayer.help.2"));
-                    // item.setLeftGraphic(wrap(SVG.HELP_CIRCLE_OUTLINE));
-                    // item.setOnAction(e ->
-                    // FXUtils.openLink("https://pmcl.fun/multiplayer/help.html"));
-                    // })
-                    // .addNavigationDrawerItem(item -> {
-                    // item.setTitle(i18n("multiplayer.help.3"));
-                    // item.setLeftGraphic(wrap(SVG.HELP_CIRCLE_OUTLINE));
-                    // item.setOnAction(e ->
-                    // FXUtils.openLink("https://pmcl.fun/multiplayer/help.html#%E5%88%9B%E5%BB%BA%E6%96%B9"));
-                    // })
-                    // .addNavigationDrawerItem(item -> {
-                    // item.setTitle(i18n("multiplayer.help.4"));
-                    // item.setLeftGraphic(wrap(SVG.HELP_CIRCLE_OUTLINE));
-                    // item.setOnAction(e ->
-                    // FXUtils.openLink("https://pmcl.fun/multiplayer/help.html#%E5%8F%82%E4%B8%8E%E8%80%85"));
+                    // item.setOnAction(e -> FXUtils.openLink("https://afdian.net/a/loooo"));
                     // })
                     .addNavigationDrawerItem(item -> {
-                        item.setTitle(i18n("multiplayer.help.5"));
+                        item.setTitle(i18n("sponsor"));
                         item.setLeftGraphic(wrap(SVG.HAND_HEAR_OUTLINE));
                         item.setOnAction(e -> FXUtils.openLink("https://afdian.net/a/loooo"));
                     })
-                    // .addNavigationDrawerItem(item -> {
-                    // item.setTitle(i18n("multiplayer.help.text"));
-                    // item.setLeftGraphic(wrap(SVG.ROCKET_LAUNCH_OUTLINE));
-                    // item.setOnAction(e ->
-                    // FXUtils.openLink("https://pmcl.fun/multiplayer/text.html"));
-                    // })
+                    .addNavigationDrawerItem(item -> {
+                        item.setTitle(i18n("multiplayer.help.1"));
+                        item.setLeftGraphic(wrap(SVG.HELP_CIRCLE_OUTLINE));
+                        item.setOnAction(e -> FXUtils.openLink("https://pmcl.fun/multiplayer/admin.html"));
+                    })
+                    .addNavigationDrawerItem(item -> {
+                        item.setTitle(i18n("multiplayer.help.2"));
+                        item.setLeftGraphic(wrap(SVG.HELP_CIRCLE_OUTLINE));
+                        item.setOnAction(e -> FXUtils.openLink("https://pmcl.fun/multiplayer/help.html"));
+                    })
+                    .addNavigationDrawerItem(item -> {
+                        item.setTitle(i18n("multiplayer.help.3"));
+                        item.setLeftGraphic(wrap(SVG.HELP_CIRCLE_OUTLINE));
+                        item.setOnAction(e -> FXUtils.openLink("https://pmcl.fun/multiplayer/create.html"));
+                    })
+                    .addNavigationDrawerItem(item -> {
+                        item.setTitle(i18n("multiplayer.help.4"));
+                        item.setLeftGraphic(wrap(SVG.HELP_CIRCLE_OUTLINE));
+                        item.setOnAction(e -> FXUtils.openLink("https://pmcl.fun/multiplayer/join.html"));
+                    })
+                    .addNavigationDrawerItem(item -> {
+                        item.setTitle(i18n("multiplayer.report"));
+                        item.setLeftGraphic(wrap(SVG.MESSAGE_ALERT_OUTLINE));
+                        item.setOnAction(e -> FXUtils.openLink("https://pmcl.fun/report"));
+                    })
                     .addNavigationDrawerItem(report -> {
                         report.setTitle(i18n("feedback"));
                         report.setLeftGraphic(wrap(SVG.MESSAGE_ALERT_OUTLINE));
@@ -131,6 +126,8 @@ public class MultiplayerPageSkin extends DecoratorAnimatedPage.DecoratorAnimated
                 {
                     HintPane hintPane = new HintPane(MessageType.WARNING);
                     hintPane.setText(i18n("multiplayer.off.hint"));
+                    HintPane tokenTipsPane = new HintPane(MessageType.INFO);
+                    tokenTipsPane.setText(i18n("multiplayer.token.hint"));
 
                     BorderPane tokenPane = new BorderPane();
                     {
@@ -173,6 +170,7 @@ public class MultiplayerPageSkin extends DecoratorAnimatedPage.DecoratorAnimated
 
                     if (!MultiplayerManager.IS_ADMINISTRATOR)
                         offPane.getContent().add(hintPane);
+                    offPane.getContent().add(tokenTipsPane);
                     offPane.getContent().addAll(tokenPane, startPane);
                 }
 
