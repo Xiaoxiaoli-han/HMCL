@@ -53,12 +53,12 @@ public class AboutPage extends StackPane {
         {
             IconedTwoLineListItem hmcl = new IconedTwoLineListItem();
             hmcl.setTitle("Hello Minecraft! Launcher");
-            hmcl.setImage(new Image("/assets/img/craft_table.png"));
+            hmcl.setImage(FXUtils.newBuiltinImage("/assets/img/craft_table.png"));
             hmcl.setSubtitle(i18n("about.thanks_to.hmcl.statement"));
             hmcl.setExternalLink("https://hmcl.huangyuhui.net");
 
             IconedTwoLineListItem huanghongxun = new IconedTwoLineListItem();
-            huanghongxun.setImage(new Image("/assets/img/yellow_fish.png"));
+            huanghongxun.setImage(FXUtils.newBuiltinImage("/assets/img/yellow_fish.png"));
             huanghongxun.setTitle("huanghongxun");
             huanghongxun.setSubtitle(i18n("about.thanks_to.huanghongxun.statement"));
             huanghongxun.setExternalLink("https://github.com/huanghongxun");
