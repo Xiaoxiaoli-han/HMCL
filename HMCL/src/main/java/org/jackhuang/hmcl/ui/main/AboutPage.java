@@ -35,13 +35,13 @@ public class AboutPage extends StackPane {
         ComponentList about = new ComponentList();
         {
             IconedTwoLineListItem launcher = new IconedTwoLineListItem();
-            launcher.setImage(new Image("/assets/img/rainbow.png"));
+            launcher.setImage(new Image("/assets/img/icon.png"));
             launcher.setTitle("Play Minecraft! Launcher");
             launcher.setSubtitle(Metadata.VERSION);
             launcher.setExternalLink("https://pmcl.fun");
 
             IconedTwoLineListItem author = new IconedTwoLineListItem();
-            author.setImage(new Image("/assets/img/xqzi.jpeg"));
+            author.setImage(new Image("/assets/img/xqzi.png"));
             author.setTitle("小小晴-qinzi");
             author.setSubtitle(i18n("about.author.statement"));
             author.setExternalLink("https://space.bilibili.com/385203573");
@@ -105,7 +105,7 @@ public class AboutPage extends StackPane {
             contributors.setExternalLink("https://github.com/xqzi/PMCL/graphs/contributors");
 
             IconedTwoLineListItem users = new IconedTwoLineListItem();
-            users.setImage(new Image("/assets/img/rainbow.png"));
+            users.setImage(new Image("/assets/img/icon.png"));
             users.setTitle(i18n("about.thanks_to.users"));
             users.setSubtitle(i18n("about.thanks_to.users.statement"));
             users.setExternalLink("https://pmcl.fun/to/sponsor");
