@@ -27,6 +27,8 @@ PMCL 有着强大的跨平台能力. 它不仅支持 Windows、Linux、macOS 等
 
 该程序遵循 [HMCL 的开源协议](https://github.com/huanghongxun/HMCL/blob/javafx/LICENSE)的情况下发布, 同时附有额外的条款.
 
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fxqzi%2FPMCL.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fxqzi%2FPMCL?ref=badge_large)
+
 ### 附加条款
 
 在未得到仓库所有者([@xqzi](https://github.com/xqzi))的明确许可的情形下, 不得将本项目的“聚合”及“赦免”部分的源代码或非最终成品的二进制文件用于任何非授权用途。
@@ -81,7 +83,3 @@ PMCL 有着强大的跨平台能力. 它不仅支持 Windows、Linux、macOS 等
 | `-Dhmcl.native.encoding=<encoding>`          | 覆盖原生编码.                                                                                         |
 | `-Dhmcl.microsoft.auth.id=<App ID>`          | 覆盖 Microsoft OAuth App ID.                                                                      |
 | `-Dhmcl.microsoft.auth.secret=<App Secret>`  | 覆盖 Microsoft OAuth App 密钥.                                                                      |
-
-
-## License
-[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fxqzi%2FPMCL.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fxqzi%2FPMCL?ref=badge_large)
