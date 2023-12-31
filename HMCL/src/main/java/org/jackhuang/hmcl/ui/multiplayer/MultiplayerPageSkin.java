@@ -78,16 +78,16 @@ public class MultiplayerPageSkin extends DecoratorAnimatedPage.DecoratorAnimated
                         item.setLeftGraphic(wrap(SVG.HAND_HEAR_OUTLINE));
                         item.setOnAction(e -> FXUtils.openLink("https://afdian.net/a/loooo"));
                     })
-                    .addNavigationDrawerItem(item -> {
-                        item.setTitle(i18n("multiplayer.help.1"));
-                        item.setLeftGraphic(wrap(SVG.HELP_CIRCLE_OUTLINE));
-                        item.setOnAction(e -> FXUtils.openLink("https://pmcl.fun/multiplayer/admin.html"));
-                    })
-                    .addNavigationDrawerItem(item -> {
-                        item.setTitle(i18n("multiplayer.help.2"));
-                        item.setLeftGraphic(wrap(SVG.HELP_CIRCLE_OUTLINE));
-                        item.setOnAction(e -> FXUtils.openLink("https://pmcl.fun/multiplayer/help.html"));
-                    })
+                    // .addNavigationDrawerItem(item -> {
+                    //     item.setTitle(i18n("multiplayer.help.1"));
+                    //     item.setLeftGraphic(wrap(SVG.HELP_CIRCLE_OUTLINE));
+                    //     item.setOnAction(e -> FXUtils.openLink("https://pmcl.fun/multiplayer/admin.html"));
+                    // })
+                    // .addNavigationDrawerItem(item -> {
+                    //     item.setTitle(i18n("multiplayer.help.2"));
+                    //     item.setLeftGraphic(wrap(SVG.HELP_CIRCLE_OUTLINE));
+                    //     item.setOnAction(e -> FXUtils.openLink("https://pmcl.fun/multiplayer/help.html"));
+                    // })
                     .addNavigationDrawerItem(item -> {
                         item.setTitle(i18n("multiplayer.help.3"));
                         item.setLeftGraphic(wrap(SVG.HELP_CIRCLE_OUTLINE));
