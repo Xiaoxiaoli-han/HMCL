@@ -77,36 +77,41 @@ public class MultiplayerPageSkin extends DecoratorAnimatedPage.DecoratorAnimated
                         item.setTitle(i18n("sponsor"));
                         item.setLeftGraphic(wrap(SVG.HAND_HEAR_OUTLINE));
                         item.setOnAction(e -> FXUtils.openLink("https://afdian.net/a/loooo"));
-                    })
-                    // .addNavigationDrawerItem(item -> {
-                    //     item.setTitle(i18n("multiplayer.help.1"));
-                    //     item.setLeftGraphic(wrap(SVG.HELP_CIRCLE_OUTLINE));
-                    //     item.setOnAction(e -> FXUtils.openLink("https://pmcl.fun/multiplayer/admin.html"));
-                    // })
-                    // .addNavigationDrawerItem(item -> {
-                    //     item.setTitle(i18n("multiplayer.help.2"));
-                    //     item.setLeftGraphic(wrap(SVG.HELP_CIRCLE_OUTLINE));
-                    //     item.setOnAction(e -> FXUtils.openLink("https://pmcl.fun/multiplayer/help.html"));
-                    // })
-                    .addNavigationDrawerItem(item -> {
-                        item.setTitle(i18n("multiplayer.help.3"));
-                        item.setLeftGraphic(wrap(SVG.HELP_CIRCLE_OUTLINE));
-                        item.setOnAction(e -> FXUtils.openLink("https://pmcl.fun/multiplayer/create.html"));
-                    })
-                    .addNavigationDrawerItem(item -> {
-                        item.setTitle(i18n("multiplayer.help.4"));
-                        item.setLeftGraphic(wrap(SVG.HELP_CIRCLE_OUTLINE));
-                        item.setOnAction(e -> FXUtils.openLink("https://pmcl.fun/multiplayer/join.html"));
-                    })
-                    .addNavigationDrawerItem(item -> {
-                        item.setTitle(i18n("multiplayer.report"));
-                        item.setLeftGraphic(wrap(SVG.MESSAGE_ALERT_OUTLINE));
-                        item.setOnAction(e -> FXUtils.openLink("https://pmcl.fun/report"));
-                    })
-                    .addNavigationDrawerItem(report -> {
-                        report.setTitle(i18n("feedback"));
-                        report.setLeftGraphic(wrap(SVG.MESSAGE_ALERT_OUTLINE));
-                        report.setOnAction(e -> HMCLService.openRedirectLink("multiplayer-feedback"));
+                        // })
+                        // .addNavigationDrawerItem(item -> {
+                        // item.setTitle(i18n("multiplayer.help.1"));
+                        // item.setLeftGraphic(wrap(SVG.HELP_CIRCLE_OUTLINE));
+                        // item.setOnAction(e ->
+                        // FXUtils.openLink("https://pmcl.fun/multiplayer/admin.html"));
+                        // })
+                        // .addNavigationDrawerItem(item -> {
+                        // item.setTitle(i18n("multiplayer.help.2"));
+                        // item.setLeftGraphic(wrap(SVG.HELP_CIRCLE_OUTLINE));
+                        // item.setOnAction(e ->
+                        // FXUtils.openLink("https://pmcl.fun/multiplayer/help.html"));
+                        // })
+                        // .addNavigationDrawerItem(item -> {
+                        // item.setTitle(i18n("multiplayer.help.3"));
+                        // item.setLeftGraphic(wrap(SVG.HELP_CIRCLE_OUTLINE));
+                        // item.setOnAction(e ->
+                        // FXUtils.openLink("https://pmcl.fun/multiplayer/create.html"));
+                        // })
+                        // .addNavigationDrawerItem(item -> {
+                        // item.setTitle(i18n("multiplayer.help.4"));
+                        // item.setLeftGraphic(wrap(SVG.HELP_CIRCLE_OUTLINE));
+                        // item.setOnAction(e ->
+                        // FXUtils.openLink("https://pmcl.fun/multiplayer/join.html"));
+                        // })
+                        // .addNavigationDrawerItem(item -> {
+                        // item.setTitle(i18n("multiplayer.report"));
+                        // item.setLeftGraphic(wrap(SVG.MESSAGE_ALERT_OUTLINE));
+                        // item.setOnAction(e -> FXUtils.openLink("https://pmcl.fun/report"));
+                        // })
+                        // .addNavigationDrawerItem(report -> {
+                        // report.setTitle(i18n("feedback"));
+                        // report.setLeftGraphic(wrap(SVG.MESSAGE_ALERT_OUTLINE));
+                        // report.setOnAction(e ->
+                        // HMCLService.openRedirectLink("multiplayer-feedback"));
                     });
             FXUtils.setLimitWidth(sideBar, 200);
             setLeft(sideBar);
@@ -150,10 +155,11 @@ public class MultiplayerPageSkin extends DecoratorAnimatedPage.DecoratorAnimated
                         tokenField.textProperty().addListener(new WeakInvalidationListener(listener));
                         tokenField.getValidators().add(validator);
 
-                        JFXHyperlink applyLink = new JFXHyperlink(i18n("multiplayer.token.apply"));
-                        BorderPane.setAlignment(applyLink, Pos.CENTER_RIGHT);
-                        applyLink.setOnAction(e -> HMCLService.openRedirectLink("multiplayer-static-token"));
-                        tokenPane.setRight(applyLink);
+                        // JFXHyperlink applyLink = new JFXHyperlink(i18n("multiplayer.token.apply"));
+                        // BorderPane.setAlignment(applyLink, Pos.CENTER_RIGHT);
+                        // applyLink.setOnAction(e ->
+                        // HMCLService.openRedirectLink("multiplayer-static-token"));
+                        // tokenPane.setRight(applyLink);
                     }
 
                     HBox startPane = new HBox();
@@ -289,15 +295,16 @@ public class MultiplayerPageSkin extends DecoratorAnimatedPage.DecoratorAnimated
                 HBox pane = new HBox();
                 pane.setAlignment(Pos.CENTER_LEFT);
 
-                JFXHyperlink aboutLink = new JFXHyperlink(i18n("about"));
-                aboutLink.setOnAction(e -> HMCLService.openRedirectLink("multiplayer-about"));
+                // JFXHyperlink aboutLink = new JFXHyperlink(i18n("about"));
+                // aboutLink.setOnAction(e ->
+                // HMCLService.openRedirectLink("multiplayer-about"));
 
                 HBox placeholder = new HBox();
                 HBox.setHgrow(placeholder, Priority.ALWAYS);
 
                 pane.getChildren().setAll(
                         new Label("Powered By 小小晴-qinzi"),
-                        aboutLink,
+                        // aboutLink,
                         placeholder,
                         FXUtils.segmentToTextFlow(i18n("multiplayer.powered_by"), Controllers::onHyperlinkAction));
 
@@ -306,7 +313,7 @@ public class MultiplayerPageSkin extends DecoratorAnimatedPage.DecoratorAnimated
 
             content.getChildren().setAll(
                     mainPane,
-                    ComponentList.createComponentListTitle(i18n("about")),
+                    // ComponentList.createComponentListTitle(i18n("about")),
                     thanksPane);
         }
     }
