@@ -241,9 +241,6 @@ public class MultiplayerPage extends DecoratorAnimatedPage implements DecoratorP
         if (getSession() != null) {
             getSession().stop();
         }
-        if (getBroadcaster() != null) {
-            getBroadcaster().close();
-        }
         clearSession();
     }
 
