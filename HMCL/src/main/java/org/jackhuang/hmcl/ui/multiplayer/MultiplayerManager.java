@@ -21,12 +21,16 @@ import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.BooleanBinding;
 import org.jackhuang.hmcl.Metadata;
+import org.jackhuang.hmcl.auth.Account;
 import org.jackhuang.hmcl.event.Event;
 import org.jackhuang.hmcl.event.EventManager;
+import org.jackhuang.hmcl.setting.Accounts;
 import org.jackhuang.hmcl.task.FileDownloadTask;
 import org.jackhuang.hmcl.task.Task;
 import org.jackhuang.hmcl.ui.Controllers;
 import org.jackhuang.hmcl.ui.FXUtils;
+import org.jackhuang.hmcl.ui.multiplayer.MultiplayerManager.HiperSession;
+import org.jackhuang.hmcl.ui.multiplayer.MultiplayerManager.HiperUnsupportedPlatformException;
 import org.jackhuang.hmcl.util.*;
 import org.jackhuang.hmcl.util.io.HttpRequest;
 import org.jackhuang.hmcl.util.io.NetworkUtils;
@@ -235,30 +239,45 @@ public final class MultiplayerManager {
             return future;
         }).thenApplyAsync(wrap(ignored -> {
 
-            String[] commands = new String[] { HIPER_PATH.toString(), "-g", token };
+            String[] commands = new String[] { HIPER_PATH.toString(), "--stop" };
+            try {
+                Process process = new ProcessBuilder()
+                        .command(commands)
+                        .start();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            Account account = Accounts.getSelectedAccount();
+            String username = account.getUsername();
 
             if (!IS_ADMINISTRATOR) {
                 switch (OperatingSystem.CURRENT_OS) {
                     case WINDOWS:
                         if (USE_GSUDO)
-                            commands = new String[] { GSUDO_LOCAL_FILE.toString(), HIPER_PATH.toString(), "-g", token };
+                            commands = new String[] { GSUDO_LOCAL_FILE.toString(), HIPER_PATH.toString(),
+                                    "-n", username, "-m", "-g", token };
                         break;
                     case LINUX:
                         String askpass = System.getProperty("hmcl.askpass", System.getenv("HMCL_ASKPASS"));
                         if ("user".equalsIgnoreCase(askpass))
-                            commands = new String[] { "sudo", "-A", HIPER_PATH.toString(), "-g", token };
+                            commands = new String[] { "sudo", "-A", HIPER_PATH.toString(),
+                                    "-n", username, "-m", "-g", token };
                         else if ("false".equalsIgnoreCase(askpass))
-                            commands = new String[] { "sudo", "--non-interactive", HIPER_PATH.toString(), "-g", token };
+                            commands = new String[] { "sudo", "--non-interactive", HIPER_PATH.toString(),
+                                    "-n", username, "-m", "-g", token };
                         else {
                             if (Files.exists(Paths.get("/usr/bin/pkexec")))
-                                commands = new String[] { "/usr/bin/pkexec", HIPER_PATH.toString(), "-g", token };
+                                commands = new String[] { "/usr/bin/pkexec", HIPER_PATH.toString(),
+                                        "-n", username, "-m", "-g", token };
                             else
-                                commands = new String[] { "sudo", "--non-interactive", HIPER_PATH.toString(), "-g",
-                                        token };
+                                commands = new String[] { "sudo", "--non-interactive", HIPER_PATH.toString(),
+                                        "-n", username, "-m", "-g", token };
                         }
                         break;
                     case OSX:
-                        commands = new String[] { "sudo", "--non-interactive", HIPER_PATH.toString(), "-g", token };
+                        commands = new String[] { "sudo", "--non-interactive", HIPER_PATH.toString(),
+                                "-n", username, "-m", "-g", token };
                         break;
                 }
             }
@@ -344,9 +363,17 @@ public final class MultiplayerManager {
 
         @Override
         public void stop() {
+            // try {
+            // writer.write("stop\n");
+            // writer.flush();
+            // } catch (IOException e) {
+            // LOG.log(Level.WARNING, "Failed to quit HiPer", e);
+            // }
+            String[] commands = new String[] { HIPER_PATH.toString(), "--stop" };
             try {
-                writer.write("stop\n");
-                writer.flush();
+                Process process = new ProcessBuilder()
+                        .command(commands)
+                        .start();
             } catch (IOException e) {
                 LOG.log(Level.WARNING, "Failed to quit HiPer", e);
             }
