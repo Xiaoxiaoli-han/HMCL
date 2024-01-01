@@ -69,7 +69,6 @@ public class MultiplayerPage extends DecoratorAnimatedPage implements DecoratorP
     private Consumer<MultiplayerManager.HiperIPEvent> onIPAllocated;
     private Consumer<MultiplayerManager.HiperShowValidUntilEvent> onValidUntil;
 
-    private final ReadOnlyObjectWrapper<LocalServerBroadcaster> broadcaster = new ReadOnlyObjectWrapper<>();
     private Consumer<Event> onBroadcasterExit = null;
 
     public MultiplayerPage() {
@@ -107,18 +106,6 @@ public class MultiplayerPage extends DecoratorAnimatedPage implements DecoratorP
 
     public void setAddress(String address) {
         this.address.set(address);
-    }
-
-    public LocalServerBroadcaster getBroadcaster() {
-        return broadcaster.get();
-    }
-
-    public ReadOnlyObjectWrapper<LocalServerBroadcaster> broadcasterProperty() {
-        return broadcaster;
-    }
-
-    public void setBroadcaster(LocalServerBroadcaster broadcaster) {
-        this.broadcaster.set(broadcaster);
     }
 
     public Date getExpireTime() {
@@ -260,35 +247,12 @@ public class MultiplayerPage extends DecoratorAnimatedPage implements DecoratorP
         clearSession();
     }
 
-    public void broadcast(String url) {
-        LocalServerBroadcaster broadcaster = new LocalServerBroadcaster(url);
-        this.onBroadcasterExit = broadcaster.onExit().registerWeak(this::onBroadcasterExit);
-        broadcaster.start();
-        this.broadcaster.set(broadcaster);
-    }
-
-    public void stopBroadcasting() {
-        if (getBroadcaster() != null) {
-            getBroadcaster().close();
-            setBroadcaster(null);
-        }
-    }
-
-    private void onBroadcasterExit(Event event) {
-        runInFX(() -> {
-            if (this.broadcaster.get() == event.getSource()) {
-                this.broadcaster.set(null);
-            }
-        });
-    }
-
     private void clearSession() {
         this.session.set(null);
         this.expireTime.set(null);
         this.onExit = null;
         this.onIPAllocated = null;
         this.onValidUntil = null;
-        this.broadcaster.set(null);
         this.onBroadcasterExit = null;
     }
 
