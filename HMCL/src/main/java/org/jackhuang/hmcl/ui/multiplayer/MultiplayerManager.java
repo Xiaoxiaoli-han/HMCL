@@ -246,8 +246,13 @@ public final class MultiplayerManager {
                 e.printStackTrace();
             }
 
+            String username = "";
             Account account = Accounts.getSelectedAccount();
-            String username = account.getUsername();
+            if (account == null) {
+                username = "null";
+            } else {
+                username = account.getUsername();
+            }
 
             if (!IS_ADMINISTRATOR) {
                 switch (OperatingSystem.CURRENT_OS) {
