@@ -51,7 +51,7 @@ void FindJavaInDirAndLaunchJVM(const std::wstring &baseDir, const std::wstring &
 }
 
 void OpenHelpPage() {
-    ShellExecute(0, 0, L"https://pmcl.fun/help.html", 0, 0, SW_SHOW);
+    ShellExecute(0, 0, L"https://afdian.net/group/e91474ceaac911ee8d1d52540025c377", 0, 0, SW_SHOW);
 }
 
 int APIENTRY wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,

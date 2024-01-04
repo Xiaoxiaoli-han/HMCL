@@ -34,13 +34,13 @@ public class AboutPage extends StackPane {
         ComponentList about = new ComponentList();
         {
             IconedTwoLineListItem launcher = new IconedTwoLineListItem();
-            launcher.setImage(FXUtils.newBuiltinImage("/assets/img/craft_table.png"));
+            launcher.setImage(FXUtils.newBuiltinImage("/assets/img/icon.png"));
             launcher.setTitle("Play Minecraft! Launcher");
             launcher.setSubtitle(Metadata.VERSION);
             launcher.setExternalLink("https://pmcl.fun");
 
             IconedTwoLineListItem author = new IconedTwoLineListItem();
-            launcher.setImage(FXUtils.newBuiltinImage("/assets/img/xqzi.png"));
+            author.setImage(FXUtils.newBuiltinImage("/assets/img/xqzi.png"));
             author.setTitle("小小晴-qinzi");
             author.setSubtitle(i18n("about.author.statement"));
             author.setExternalLink("https://space.bilibili.com/385203573");
@@ -79,7 +79,7 @@ public class AboutPage extends StackPane {
             glavo.setTitle("Glavo");
             glavo.setSubtitle(i18n("about.thanks_to.glavo.statement"));
             glavo.setExternalLink("https://github.com/Glavo");
-            
+
             IconedTwoLineListItem gamerteam = new IconedTwoLineListItem();
             gamerteam.setTitle("gamerteam");
             gamerteam.setImage(FXUtils.newBuiltinImage("/assets/img/gamerteam.png"));
@@ -110,10 +110,10 @@ public class AboutPage extends StackPane {
             contributors.setExternalLink("https://github.com/xqzi/PMCL/graphs/contributors");
 
             IconedTwoLineListItem users = new IconedTwoLineListItem();
-            users.setImage(FXUtils.newBuiltinImage("/assets/img/craft_table.png"));
+            users.setImage(FXUtils.newBuiltinImage("/assets/img/icon.png"));
             users.setTitle(i18n("about.thanks_to.users"));
             users.setSubtitle(i18n("about.thanks_to.users.statement"));
-            users.setExternalLink("https://pmcl.fun/to/sponsor");
+            users.setExternalLink("https://afdian.net/a/loooo");
 
             thanks.getContent().setAll(hmcl, huanghongxun, yushijinhun, bangbang93, glavo, mcbbs, mcmod, redLnn,
                     contributors,

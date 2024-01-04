@@ -206,7 +206,7 @@ public class DecoratorSkin extends SkinBase<Decorator> {
                 JFXButton btnHelp = new JFXButton();
                 btnHelp.setGraphic(SVG.HELP_CIRCLE_OUTLINE.createIcon(Theme.foregroundFillBinding(), -1, -1));
                 btnHelp.getStyleClass().add("jfx-decorator-button");
-                btnHelp.setOnAction(e -> FXUtils.openLink("https://pmcl.fun/help.html"));
+                btnHelp.setOnAction(e -> FXUtils.openLink("https://afdian.net/group/e91474ceaac911ee8d1d52540025c377"));
 
                 JFXButton btnMin = new JFXButton();
                 StackPane pane = new StackPane(minus);
