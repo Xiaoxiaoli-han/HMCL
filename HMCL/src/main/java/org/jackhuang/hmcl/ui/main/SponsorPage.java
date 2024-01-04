@@ -113,14 +113,15 @@ public class SponsorPage extends StackPane {
     }
 
     private void onSponsor() {
-        FXUtils.openLink("https://pmcl.fun/to/sponsor");
+        FXUtils.openLink("https://afdian.net/a/loooo");
     }
 
     private void loadSponsorList() {
-        Task.<List<Sponsor>>supplyAsync(() -> HttpRequest.GET("https://hmcl.huangyuhui.net/api/sponsor").getJson(new TypeToken<List<Sponsor>>() {
-        }.getType())).thenAcceptAsync(Schedulers.javafx(), sponsors -> {
-            listView.getItems().setAll(sponsors);
-        }).start();
+        Task.<List<Sponsor>>supplyAsync(() -> HttpRequest.GET("https://hmcl.huangyuhui.net/api/sponsor")
+                .getJson(new TypeToken<List<Sponsor>>() {
+                }.getType())).thenAcceptAsync(Schedulers.javafx(), sponsors -> {
+                    listView.getItems().setAll(sponsors);
+                }).start();
     }
 
     private static class Sponsor {

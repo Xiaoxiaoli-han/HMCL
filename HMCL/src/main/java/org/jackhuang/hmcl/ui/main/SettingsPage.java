@@ -66,7 +66,7 @@ public final class SettingsPage extends SettingsView {
         fileCommonLocation.selectedDataProperty().bindBidirectional(config().commonDirTypeProperty());
         fileCommonLocationSublist.subtitleProperty().bind(
                 Bindings.createObjectBinding(() -> Optional.ofNullable(Settings.instance().getCommonDirectory())
-                                .orElse(i18n("launcher.cache_directory.disabled")),
+                        .orElse(i18n("launcher.cache_directory.disabled")),
                         config().commonDirectoryProperty(), config().commonDirTypeProperty()));
 
         // ==== Update ====
@@ -126,13 +126,17 @@ public final class SettingsPage extends SettingsView {
         // We cannot determine which file is JUL using.
         // So we write all the logs to a new file.
         thread(() -> {
-            Path logFile = Paths.get("hmcl-exported-logs-" + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH-mm-ss")) + ".log").toAbsolutePath();
+            Path logFile = Paths
+                    .get("hmcl-exported-logs-"
+                            + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH-mm-ss")) + ".log")
+                    .toAbsolutePath();
 
             LOG.info("Exporting logs to " + logFile);
             try {
                 Files.write(logFile, Logging.getRawLogs());
             } catch (IOException e) {
-                Platform.runLater(() -> Controllers.dialog(i18n("settings.launcher.launcher_log.export.failed") + "\n" + e, null, MessageType.ERROR));
+                Platform.runLater(() -> Controllers.dialog(
+                        i18n("settings.launcher.launcher_log.export.failed") + "\n" + e, null, MessageType.ERROR));
                 LOG.log(Level.WARNING, "Failed to export logs", e);
                 return;
             }
@@ -144,7 +148,7 @@ public final class SettingsPage extends SettingsView {
 
     @Override
     protected void onSponsor() {
-        FXUtils.openLink("https://pmcl.fun/to/sponsor");
+        FXUtils.openLink("https://afdian.net/a/loooo");
     }
 
     @Override

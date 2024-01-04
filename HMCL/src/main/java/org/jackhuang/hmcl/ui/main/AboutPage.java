@@ -113,7 +113,7 @@ public class AboutPage extends StackPane {
             users.setImage(FXUtils.newBuiltinImage("/assets/img/icon.png"));
             users.setTitle(i18n("about.thanks_to.users"));
             users.setSubtitle(i18n("about.thanks_to.users.statement"));
-            users.setExternalLink("https://pmcl.fun/to/sponsor");
+            users.setExternalLink("https://afdian.net/a/loooo");
 
             thanks.getContent().setAll(hmcl, huanghongxun, yushijinhun, bangbang93, glavo, mcbbs, mcmod, redLnn,
                     contributors,
