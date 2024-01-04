@@ -33,14 +33,9 @@ jobs:
           name: latest
           tag_name: latest
           files: |
-            HMCL/build/libs/PMCL-3.5.dev-104fe70.exe
-            HMCL/build/libs/PMCL-3.5.dev-104fe70.exe.md5
-            HMCL/build/libs/PMCL-3.5.dev-104fe70.exe.sha1
-            HMCL/build/libs/PMCL-3.5.dev-104fe70.exe.sha256
-            HMCL/build/libs/PMCL-3.5.dev-104fe70.exe.sha512
-            HMCL/build/libs/PMCL-3.5.dev-104fe70.jar
-            HMCL/build/libs/PMCL-3.5.dev-104fe70.jar.md5
-            HMCL/build/libs/PMCL-3.5.dev-104fe70.jar.sha1
-            HMCL/build/libs/PMCL-3.5.dev-104fe70.jar.sha256
-            HMCL/build/libs/PMCL-3.5.dev-104fe70.jar.sha512
-            
+            HMCL/build/libs/PMCL-*.exe
+            HMCL/build/libs/PMCL-*.exe.md5
+            HMCL/build/libs/PMCL-*.exe.sha1
+            HMCL/build/libs/PMCL-*.jar
+            HMCL/build/libs/PMCL-*.jar.md5
+            HMCL/build/libs/PMCL-*.jar.sha1
