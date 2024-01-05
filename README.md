@@ -7,9 +7,12 @@
 
 ## 简介
 
-Play Minecraft Launcher (PMCL)是一款基于HMCL衍生的跨平台 Minecraft 启动器, 支持 Mod 管理, 游戏自定义, 游戏自动安装 (Forge, Fabric, Quilt, LiteLoader 与 OptiFine), 模组包创建, 界面自定义等功能.
+Play Minecraft Launcher (PMCL)是一款基于HMCL衍生的跨平台 Minecraft /我的世界启动器, 支持 Mod 管理, 游戏自定义, 游戏自动安装 (Forge, Fabric, Quilt, LiteLoader 与 OptiFine), 模组包创建, 界面自定义、多人联机等功能.
 
-PMCL 有着强大的跨平台能力. 它不仅支持 Windows、Linux、macOS 等常见的操作系统，同时也支持 x86、ARM、MIPS 和 LoongArch 等不同的 CPU 架构. 您可以使用 PMCL 在不同平台上轻松的游玩 Minecraft.
+PMCL 有着强大的跨平台能力. 它不仅支持 Windows、Linux、macOS 等常见的操作系统，同时也支持 x86、ARM、MIPS 和 LoongArch 等不同的 CPU 架构. 您可以使用 PMCL 在不同平台上轻松的联机游玩 Minecraft.
+
+详见：
+https://pmcl.fun
 
 如果您想要了解 PMCL 对不同平台的支持程度，请参见[此表格](PLATFORM_cn.md).
 
