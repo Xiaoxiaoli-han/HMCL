@@ -20,7 +20,7 @@ https://pmcl.fun
 
 ## 下载
 
-请从 [PMCL 官网](https://pmcl.fun/download) 下载最新版本的 PMCL.
+请从 [PMCL 官网](https://pmcl.fun) 下载最新版本的 PMCL.
 
 你也可以在 [GitHub Releases](https://github.com/xqzi/PMCL/releases) 中下载最新版本的 PMCL.
 

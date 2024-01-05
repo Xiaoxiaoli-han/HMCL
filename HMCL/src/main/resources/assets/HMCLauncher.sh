@@ -176,7 +176,8 @@ case "$_HMCL_ARCH" in
     ;;
 esac
 
-_HMCL_DOWNLOAD_PAGE="https://pmcl.fun/downloads/$_HMCL_DOWNLOAD_PAGE_OS/$_HMCL_DOWNLOAD_PAGE_ARCH.html"
+# _HMCL_DOWNLOAD_PAGE="https://pmcl.fun/downloads/$_HMCL_DOWNLOAD_PAGE_OS/$_HMCL_DOWNLOAD_PAGE_ARCH.html"
+_HMCL_DOWNLOAD_PAGE="https://pmcl.fun"
 
 if [ "$_HMCL_USE_CHINESE" == true ]; then
   echo "运行 PMCL 需要 Java 运行时环境，请安装 Java 并设置环境变量后重试。" 1>&2

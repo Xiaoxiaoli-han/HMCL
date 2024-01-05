@@ -29,6 +29,8 @@ import org.jackhuang.hmcl.task.FileDownloadTask;
 import org.jackhuang.hmcl.task.Task;
 import org.jackhuang.hmcl.ui.Controllers;
 import org.jackhuang.hmcl.ui.FXUtils;
+import org.jackhuang.hmcl.ui.multiplayer.MultiplayerManager.HiperSession;
+import org.jackhuang.hmcl.ui.multiplayer.MultiplayerManager.HiperUnsupportedPlatformException;
 import org.jackhuang.hmcl.util.*;
 import org.jackhuang.hmcl.util.io.HttpRequest;
 import org.jackhuang.hmcl.util.io.NetworkUtils;
@@ -251,7 +253,7 @@ public final class MultiplayerManager {
             if (account == null) {
                 username = "null";
             } else {
-                username = account.getUsername();
+                username = account.getCharacter();
             }
 
             if (!IS_ADMINISTRATOR) {
