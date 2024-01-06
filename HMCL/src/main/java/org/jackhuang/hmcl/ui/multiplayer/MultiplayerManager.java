@@ -254,6 +254,8 @@ public final class MultiplayerManager {
                 username = account.getCharacter();
             }
 
+            commands = new String[] { HIPER_PATH.toString(), "-n", username, "-m", "-g", token };
+
             if (!IS_ADMINISTRATOR) {
                 switch (OperatingSystem.CURRENT_OS) {
                     case WINDOWS:
