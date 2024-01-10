@@ -278,7 +278,7 @@ public class GameCrashWindow extends Stage {
     }
 
     private void showLogWindow() {
-        LogWindow logWindow = new LogWindow();
+        LogWindow logWindow = new LogWindow(managedProcess);
 
         logWindow.logLine(
                 Logging.filterForbiddenToken("Command: " + new CommandBuilder().addAll(managedProcess.getCommands())),
