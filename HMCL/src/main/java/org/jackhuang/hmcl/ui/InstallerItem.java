@@ -35,8 +35,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import org.jackhuang.hmcl.download.LibraryAnalyzer;
 import org.jackhuang.hmcl.setting.Theme;
+import org.jackhuang.hmcl.setting.VersionIconType;
 import org.jackhuang.hmcl.ui.construct.RipplerContainer;
 import org.jackhuang.hmcl.util.i18n.I18n;
+import org.jackhuang.hmcl.util.versioning.VersionNumber;
 
 import static org.jackhuang.hmcl.download.LibraryAnalyzer.LibraryType.*;
 import static org.jackhuang.hmcl.util.i18n.I18n.i18n;
@@ -46,7 +48,7 @@ import static org.jackhuang.hmcl.util.i18n.I18n.i18n;
  */
 public class InstallerItem extends Control {
     private final String id;
-    private final String imageUrl;
+    private final VersionIconType iconType;
     public final StringProperty libraryVersion = new SimpleStringProperty();
     public final StringProperty incompatibleLibraryName = new SimpleStringProperty();
     public final StringProperty dependencyName = new SimpleStringProperty();
@@ -73,30 +75,30 @@ public class InstallerItem extends Control {
 
         switch (id) {
             case "game":
-                imageUrl = "/assets/img/grass.png";
+                iconType = VersionIconType.GRASS;
                 break;
             case "fabric":
             case "fabric-api":
-                imageUrl = "/assets/img/fabric.png";
+                iconType = VersionIconType.FABRIC;
                 break;
             case "forge":
-                imageUrl = "/assets/img/forge.png";
+                iconType = VersionIconType.FORGE;
                 break;
             case "liteloader":
-                imageUrl = "/assets/img/chicken.png";
+                iconType = VersionIconType.CHICKEN;
                 break;
             case "optifine":
-                imageUrl = "/assets/img/command.png";
+                iconType = VersionIconType.OPTIFINE;
                 break;
             case "quilt":
             case "quilt-api":
-                imageUrl = "/assets/img/quilt.png";
+                iconType = VersionIconType.QUILT;
                 break;
             case "neoforge":
-                imageUrl = "/assets/img/neoforge.png";
+                iconType = VersionIconType.NEO_FORGE;
                 break;
             default:
-                imageUrl = null;
+                iconType = null;
                 break;
         }
     }
@@ -120,7 +122,7 @@ public class InstallerItem extends Control {
         return new InstallerItemSkin(this);
     }
 
-    public static class InstallerItemGroup {
+    public final static class InstallerItemGroup {
         public final InstallerItem game = new InstallerItem(MINECRAFT);
         public final InstallerItem fabric = new InstallerItem(FABRIC);
         public final InstallerItem fabricApi = new InstallerItem(FABRIC_API);
@@ -131,7 +133,9 @@ public class InstallerItem extends Control {
         public final InstallerItem quilt = new InstallerItem(QUILT);
         public final InstallerItem quiltApi = new InstallerItem(QUILT_API);
 
-        public InstallerItemGroup() {
+        private final InstallerItem[] libraries;
+
+        public InstallerItemGroup(String gameVersion) {
             forge.incompatibleLibraryName.bind(Bindings.createStringBinding(() -> {
                 if (fabric.libraryVersion.get() != null) return FABRIC.getPatchId();
                 if (quilt.libraryVersion.get() != null) return QUILT.getPatchId();
@@ -193,10 +197,19 @@ public class InstallerItem extends Control {
                 if (quilt.libraryVersion.get() == null) return QUILT.getPatchId();
                 else return null;
             }, quilt.libraryVersion));
+
+
+            if (gameVersion == null) {
+                this.libraries = new InstallerItem[]{game, forge, neoForge, liteLoader, optiFine, fabric, fabricApi, quilt, quiltApi};
+            } else if (VersionNumber.compare(gameVersion, "1.13") < 0) {
+                this.libraries = new InstallerItem[]{game, forge, liteLoader, optiFine};
+            } else {
+                this.libraries = new InstallerItem[]{game, forge, neoForge, optiFine, fabric, fabricApi, quilt, quiltApi};
+            }
         }
 
         public InstallerItem[] getLibraries() {
-            return new InstallerItem[]{game, forge, neoForge, liteLoader, optiFine, fabric, fabricApi, quilt, quiltApi};
+            return libraries;
         }
     }
 
@@ -221,8 +234,8 @@ public class InstallerItem extends Control {
             pane.pseudoClassStateChanged(LIST_ITEM, control.style == Style.LIST_ITEM);
             pane.pseudoClassStateChanged(CARD, control.style == Style.CARD);
 
-            if (control.imageUrl != null) {
-                ImageView view = new ImageView(FXUtils.newBuiltinImage(control.imageUrl));
+            if (control.iconType != null) {
+                ImageView view = new ImageView(control.iconType.getIcon());
                 Node node = FXUtils.limitingSize(view, 32, 32);
                 node.setMouseTransparent(true);
                 node.getStyleClass().add("installer-item-image");
