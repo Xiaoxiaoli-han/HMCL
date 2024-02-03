@@ -45,7 +45,8 @@ import static org.jackhuang.hmcl.util.Pair.pair;
 import static org.jackhuang.hmcl.util.i18n.I18n.i18n;
 
 public final class DownloadProviders {
-    private DownloadProviders() {}
+    private DownloadProviders() {
+    }
 
     private static DownloadProvider currentDownloadProvider;
 
@@ -65,7 +66,8 @@ public final class DownloadProviders {
     static {
         String bmclapiRoot = "https://bmclapi2.bangbang93.com";
         String bmclapiRootOverride = System.getProperty("hmcl.bmclapi.override");
-        if (bmclapiRootOverride != null) bmclapiRoot = bmclapiRootOverride;
+        if (bmclapiRootOverride != null)
+            bmclapiRoot = bmclapiRootOverride;
 
         MOJANG = new MojangDownloadProvider();
         BMCLAPI = new BMCLAPIDownloadProvider(bmclapiRoot);
@@ -73,17 +75,16 @@ public final class DownloadProviders {
         rawProviders = mapOf(
                 pair("mojang", MOJANG),
                 pair("bmclapi", BMCLAPI),
-                pair("mcbbs", MCBBS)
-        );
+                pair("mcbbs", MCBBS));
 
         AdaptedDownloadProvider fileProvider = new AdaptedDownloadProvider();
-        fileProvider.setDownloadProviderCandidates(Arrays.asList(MCBBS, BMCLAPI, MOJANG));
+        fileProvider.setDownloadProviderCandidates(Arrays.asList(BMCLAPI, MCBBS, MOJANG));
         BalancedDownloadProvider balanced = new BalancedDownloadProvider(MOJANG, MCBBS, BMCLAPI);
 
         providersById = mapOf(
                 pair("official", new AutoDownloadProvider(MOJANG, fileProvider)),
                 pair("balanced", new AutoDownloadProvider(balanced, fileProvider)),
-                pair("mirror", new AutoDownloadProvider(MCBBS, fileProvider)));
+                pair("mirror", new AutoDownloadProvider(BMCLAPI, fileProvider)));
 
         observer = FXUtils.observeWeak(() -> {
             FetchTask.setDownloadExecutorConcurrency(
@@ -113,9 +114,7 @@ public final class DownloadProviders {
             fileDownloadProvider.setDownloadProviderCandidates(
                     Stream.concat(
                             Stream.of(primary),
-                            rawProviders.values().stream().filter(x -> x != primary)
-                    ).collect(Collectors.toList())
-            );
+                            rawProviders.values().stream().filter(x -> x != primary)).collect(Collectors.toList()));
         });
     }
 
@@ -149,18 +148,21 @@ public final class DownloadProviders {
                 if (I18n.hasKey("download.code." + responseCodeException.getResponseCode())) {
                     return i18n("download.code." + responseCodeException.getResponseCode(), url);
                 } else {
-                    return i18n("install.failed.downloading.detail", url) + "\n" + StringUtils.getStackTrace(exception.getCause());
+                    return i18n("install.failed.downloading.detail", url) + "\n"
+                            + StringUtils.getStackTrace(exception.getCause());
                 }
             } else if (exception.getCause() instanceof FileNotFoundException) {
                 return i18n("download.code.404", url);
             } else if (exception.getCause() instanceof AccessDeniedException) {
-                return i18n("install.failed.downloading.detail", url) + "\n" + i18n("exception.access_denied", ((AccessDeniedException) exception.getCause()).getFile());
+                return i18n("install.failed.downloading.detail", url) + "\n"
+                        + i18n("exception.access_denied", ((AccessDeniedException) exception.getCause()).getFile());
             } else if (exception.getCause() instanceof ArtifactMalformedException) {
                 return i18n("install.failed.downloading.detail", url) + "\n" + i18n("exception.artifact_malformed");
             } else if (exception.getCause() instanceof SSLHandshakeException) {
                 return i18n("install.failed.downloading.detail", url) + "\n" + i18n("exception.ssl_handshake");
             } else {
-                return i18n("install.failed.downloading.detail", url) + "\n" + StringUtils.getStackTrace(exception.getCause());
+                return i18n("install.failed.downloading.detail", url) + "\n"
+                        + StringUtils.getStackTrace(exception.getCause());
             }
         } else if (exception instanceof ArtifactMalformedException) {
             return i18n("exception.artifact_malformed");

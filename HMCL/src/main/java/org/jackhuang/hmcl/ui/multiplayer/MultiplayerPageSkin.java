@@ -182,15 +182,15 @@ public class MultiplayerPageSkin extends DecoratorAnimatedPage.DecoratorAnimated
 
                 ComponentList onPane = new ComponentList();
                 {
-                    BorderPane expirationPane = new BorderPane();
-                    expirationPane.setLeft(new Label(i18n("multiplayer.session.expiration")));
-                    Label expirationLabel = new Label();
-                    expirationLabel.textProperty()
-                            .bind(Bindings.createStringBinding(
-                                    () -> control.getExpireTime() == null ? ""
-                                            : Locales.SIMPLE_DATE_FORMAT.get().format(control.getExpireTime()),
-                                    control.expireTimeProperty()));
-                    expirationPane.setRight(expirationLabel);
+                    // BorderPane expirationPane = new BorderPane();
+                    // expirationPane.setLeft(new Label(i18n("multiplayer.session.expiration")));
+                    // Label expirationLabel = new Label();
+                    // expirationLabel.textProperty()
+                    // .bind(Bindings.createStringBinding(
+                    // () -> control.getExpireTime() == null ? ""
+                    // : Locales.SIMPLE_DATE_FORMAT.get().format(control.getExpireTime()),
+                    // control.expireTimeProperty()));
+                    // expirationPane.setRight(expirationLabel);
 
                     GridPane masterPane = new GridPane();
                     masterPane.setVgap(8);
@@ -276,7 +276,7 @@ public class MultiplayerPageSkin extends DecoratorAnimatedPage.DecoratorAnimated
                         if (t == null) {
                             onPane.getContent().setAll(masterPane, slavePane);
                         } else {
-                            onPane.getContent().setAll(expirationPane, masterPane, slavePane);
+                            onPane.getContent().setAll(masterPane, slavePane);
                         }
                     });
                 }
