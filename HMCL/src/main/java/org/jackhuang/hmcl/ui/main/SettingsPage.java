@@ -148,7 +148,7 @@ public final class SettingsPage extends SettingsView {
 
     @Override
     protected void onSponsor() {
-        FXUtils.openLink("https://afdian.net/a/loooo");
+        // FXUtils.openLink("https://afdian.net/a/loooo");
     }
 
     @Override

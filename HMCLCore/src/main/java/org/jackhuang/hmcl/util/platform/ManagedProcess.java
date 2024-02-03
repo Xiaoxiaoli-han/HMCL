@@ -35,7 +35,7 @@ import java.util.function.Predicate;
  * @see org.jackhuang.hmcl.launch.ExitWaiter
  * @see org.jackhuang.hmcl.launch.StreamPump
  */
-public final class ManagedProcess {
+public class ManagedProcess {
     private final Process process;
     private final List<String> commands;
     private final String classpath;
@@ -86,7 +86,8 @@ public final class ManagedProcess {
     /**
      * The PID of the raw system process
      *
-     * @throws UnsupportedOperationException if current Java environment is not supported.
+     * @throws UnsupportedOperationException if current Java environment is not
+     *                                       supported.
      * @return PID
      */
     public long getPID() throws UnsupportedOperationException {
@@ -109,17 +110,21 @@ public final class ManagedProcess {
             } else if (OperatingSystem.CURRENT_OS == OperatingSystem.OSX || OperatingSystem.CURRENT_OS.isLinuxOrBSD()) {
                 // On Linux or Mac, we can get field UnixProcess.pid field to get the pid.
                 // All the Java version is accepted.
-                // See https://github.com/openjdk/jdk/blob/jdk8-b120/jdk/src/solaris/classes/java/lang/UNIXProcess.java.linux
+                // See
+                // https://github.com/openjdk/jdk/blob/jdk8-b120/jdk/src/solaris/classes/java/lang/UNIXProcess.java.linux
                 try {
                     Field pidField = process.getClass().getDeclaredField("pid");
                     pidField.setAccessible(true);
                     return pidField.getInt(process);
                 } catch (NoSuchFieldException | IllegalAccessException e) {
-                    throw new UnsupportedOperationException("Cannot get the pid of a Process on Java 8 on OSX / Linux.", e);
+                    throw new UnsupportedOperationException("Cannot get the pid of a Process on Java 8 on OSX / Linux.",
+                            e);
                 }
             } else {
                 // Unknown Operating System, no fallback available.
-                throw new UnsupportedOperationException(String.format("Cannot get the pid of a Process on Java 8 on Unknown Operating System (%s).", System.getProperty("os.name")));
+                throw new UnsupportedOperationException(
+                        String.format("Cannot get the pid of a Process on Java 8 on Unknown Operating System (%s).",
+                                System.getProperty("os.name")));
             }
         }
     }
@@ -182,11 +187,15 @@ public final class ManagedProcess {
     }
 
     public synchronized void pumpInputStream(Consumer<String> onLogLine) {
-        addRelatedThread(Lang.thread(new StreamPump(process.getInputStream(), onLogLine, OperatingSystem.NATIVE_CHARSET), "ProcessInputStreamPump", true));
+        addRelatedThread(
+                Lang.thread(new StreamPump(process.getInputStream(), onLogLine, OperatingSystem.NATIVE_CHARSET),
+                        "ProcessInputStreamPump", true));
     }
 
     public synchronized void pumpErrorStream(Consumer<String> onLogLine) {
-        addRelatedThread(Lang.thread(new StreamPump(process.getErrorStream(), onLogLine, OperatingSystem.NATIVE_CHARSET), "ProcessErrorStreamPump", true));
+        addRelatedThread(
+                Lang.thread(new StreamPump(process.getErrorStream(), onLogLine, OperatingSystem.NATIVE_CHARSET),
+                        "ProcessErrorStreamPump", true));
     }
 
     /**
@@ -209,7 +218,8 @@ public final class ManagedProcess {
     }
 
     /**
-     * Destroys the raw process and other related threads that are monitoring this raw process.
+     * Destroys the raw process and other related threads that are monitoring this
+     * raw process.
      */
     public void stop() {
         process.destroy();

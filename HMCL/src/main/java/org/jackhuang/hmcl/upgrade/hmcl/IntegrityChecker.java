@@ -44,7 +44,8 @@ import static org.jackhuang.hmcl.util.Logging.LOG;
  * @author yushijinhun
  */
 public final class IntegrityChecker {
-    private IntegrityChecker() {}
+    private IntegrityChecker() {
+    }
 
     public static final boolean DISABLE_SELF_INTEGRITY_CHECK = "true".equals(System.getProperty("hmcl.self_integrity_check.disable"));
 
@@ -56,7 +57,8 @@ public final class IntegrityChecker {
             if (in == null) {
                 throw new IOException("Public key not found");
             }
-            return KeyFactory.getInstance("RSA").generatePublic(new X509EncodedKeySpec(IOUtils.readFullyAsByteArray(in)));
+            return KeyFactory.getInstance("RSA")
+                    .generatePublic(new X509EncodedKeySpec(IOUtils.readFullyAsByteArray(in)));
         } catch (GeneralSecurityException e) {
             throw new IOException("Failed to load public key", e);
         }
@@ -141,6 +143,6 @@ public final class IntegrityChecker {
     }
 
     public static boolean isOfficial() {
-        return isSelfVerified() || (Metadata.GITHUB_SHA != null && Metadata.BUILD_CHANNEL.equals("nightly"));
+        return isSelfVerified() || (Metadata.GITHUB_SHA == null && Metadata.BUILD_CHANNEL.equals("stable"));
     }
 }

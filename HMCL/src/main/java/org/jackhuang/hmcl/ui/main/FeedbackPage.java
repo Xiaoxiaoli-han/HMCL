@@ -45,7 +45,7 @@ public class FeedbackPage extends SpinnerPane {
             users.setImage(FXUtils.newBuiltinImage("/assets/img/icon.png"));
             users.setTitle(i18n("feedback.qq_group"));
             users.setSubtitle(i18n("feedback.qq_group.statement"));
-            users.setExternalLink("https://afdian.net/a/loooo");
+            // users.setExternalLink("https://afdian.net/a/loooo");
 
             IconedTwoLineListItem github = new IconedTwoLineListItem();
             github.setImage(FXUtils.newBuiltinImage("/assets/img/github.png"));
