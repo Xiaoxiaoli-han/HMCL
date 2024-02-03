@@ -66,53 +66,53 @@ public class MultiplayerPageSkin extends DecoratorAnimatedPage.DecoratorAnimated
                         item.setOnAction(e -> {
                             control.launchGame();
                         });
-                    })
-                    // .startCategory(i18n("help"))
-                    // .addNavigationDrawerItem(item -> {
-                    // item.setTitle(i18n("help"));
-                    // item.setLeftGraphic(wrap(SVG.HELP_CIRCLE_OUTLINE));
-                    // item.setOnAction(e -> FXUtils.openLink("https://afdian.net/a/loooo"));
-                    // })
-                    .addNavigationDrawerItem(item -> {
-                        item.setTitle(i18n("sponsor"));
-                        item.setLeftGraphic(wrap(SVG.HAND_HEAR_OUTLINE));
-                        item.setOnAction(e -> FXUtils.openLink("https://afdian.net/a/loooo"));
-                        // })
-                        // .addNavigationDrawerItem(item -> {
-                        // item.setTitle(i18n("multiplayer.help.1"));
-                        // item.setLeftGraphic(wrap(SVG.HELP_CIRCLE_OUTLINE));
-                        // item.setOnAction(e ->
-                        // FXUtils.openLink("https://pmcl.fun/multiplayer/admin.html"));
-                        // })
-                        // .addNavigationDrawerItem(item -> {
-                        // item.setTitle(i18n("multiplayer.help.2"));
-                        // item.setLeftGraphic(wrap(SVG.HELP_CIRCLE_OUTLINE));
-                        // item.setOnAction(e ->
-                        // FXUtils.openLink("https://pmcl.fun/multiplayer/help.html"));
-                        // })
-                        // .addNavigationDrawerItem(item -> {
-                        // item.setTitle(i18n("multiplayer.help.3"));
-                        // item.setLeftGraphic(wrap(SVG.HELP_CIRCLE_OUTLINE));
-                        // item.setOnAction(e ->
-                        // FXUtils.openLink("https://pmcl.fun/multiplayer/create.html"));
-                        // })
-                        // .addNavigationDrawerItem(item -> {
-                        // item.setTitle(i18n("multiplayer.help.4"));
-                        // item.setLeftGraphic(wrap(SVG.HELP_CIRCLE_OUTLINE));
-                        // item.setOnAction(e ->
-                        // FXUtils.openLink("https://pmcl.fun/multiplayer/join.html"));
-                        // })
-                        // .addNavigationDrawerItem(item -> {
-                        // item.setTitle(i18n("multiplayer.report"));
-                        // item.setLeftGraphic(wrap(SVG.MESSAGE_ALERT_OUTLINE));
-                        // item.setOnAction(e -> FXUtils.openLink("https://pmcl.fun/report"));
-                        // })
-                        // .addNavigationDrawerItem(report -> {
-                        // report.setTitle(i18n("feedback"));
-                        // report.setLeftGraphic(wrap(SVG.MESSAGE_ALERT_OUTLINE));
-                        // report.setOnAction(e ->
-                        // HMCLService.openRedirectLink("multiplayer-feedback"));
                     });
+            // .startCategory(i18n("help"))
+            // .addNavigationDrawerItem(item -> {
+            // item.setTitle(i18n("help"));
+            // item.setLeftGraphic(wrap(SVG.HELP_CIRCLE_OUTLINE));
+            // item.setOnAction(e -> FXUtils.openLink("https://afdian.net/a/loooo"));
+            // })
+            // .addNavigationDrawerItem(item -> {
+            // item.setTitle(i18n("sponsor"));
+            // item.setLeftGraphic(wrap(SVG.HAND_HEAR_OUTLINE));
+            // item.setOnAction(e -> FXUtils.openLink("https://afdian.net/a/loooo"));
+            // })
+            // .addNavigationDrawerItem(item -> {
+            // item.setTitle(i18n("multiplayer.help.1"));
+            // item.setLeftGraphic(wrap(SVG.HELP_CIRCLE_OUTLINE));
+            // item.setOnAction(e ->
+            // FXUtils.openLink("https://pmcl.fun/multiplayer/admin.html"));
+            // })
+            // .addNavigationDrawerItem(item -> {
+            // item.setTitle(i18n("multiplayer.help.2"));
+            // item.setLeftGraphic(wrap(SVG.HELP_CIRCLE_OUTLINE));
+            // item.setOnAction(e ->
+            // FXUtils.openLink("https://pmcl.fun/multiplayer/help.html"));
+            // })
+            // .addNavigationDrawerItem(item -> {
+            // item.setTitle(i18n("multiplayer.help.3"));
+            // item.setLeftGraphic(wrap(SVG.HELP_CIRCLE_OUTLINE));
+            // item.setOnAction(e ->
+            // FXUtils.openLink("https://pmcl.fun/multiplayer/create.html"));
+            // })
+            // .addNavigationDrawerItem(item -> {
+            // item.setTitle(i18n("multiplayer.help.4"));
+            // item.setLeftGraphic(wrap(SVG.HELP_CIRCLE_OUTLINE));
+            // item.setOnAction(e ->
+            // FXUtils.openLink("https://pmcl.fun/multiplayer/join.html"));
+            // })
+            // .addNavigationDrawerItem(item -> {
+            // item.setTitle(i18n("multiplayer.report"));
+            // item.setLeftGraphic(wrap(SVG.MESSAGE_ALERT_OUTLINE));
+            // item.setOnAction(e -> FXUtils.openLink("https://pmcl.fun/report"));
+            // })
+            // .addNavigationDrawerItem(report -> {
+            // report.setTitle(i18n("feedback"));
+            // report.setLeftGraphic(wrap(SVG.MESSAGE_ALERT_OUTLINE));
+            // report.setOnAction(e ->
+            // HMCLService.openRedirectLink("multiplayer-feedback"));
+            // });
             FXUtils.setLimitWidth(sideBar, 200);
             setLeft(sideBar);
         }

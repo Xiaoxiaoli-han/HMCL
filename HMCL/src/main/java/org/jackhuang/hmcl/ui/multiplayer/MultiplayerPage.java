@@ -270,7 +270,7 @@ public class MultiplayerPage extends DecoratorAnimatedPage implements DecoratorP
                     if (OperatingSystem.CURRENT_OS == OperatingSystem.WINDOWS) {
                         Controllers.confirm(i18n("multiplayer.error.failed_sudo.windows"), null,
                                 MessageDialogPane.MessageType.WARNING, () -> {
-                                    FXUtils.openLink("https://afdian.net/a/loooo?tab=feed");
+                                    FXUtils.openLink("https://pmcl.fun");
                                 }, null);
                     } else if (OperatingSystem.CURRENT_OS == OperatingSystem.LINUX) {
                         Controllers.dialog(
