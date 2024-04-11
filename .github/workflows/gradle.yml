@@ -27,6 +27,11 @@ jobs:
         with:
           name: PMCL-${{ env.SHORT_SHA }}
           path: HMCL/build/libs
+      - name: Delete release
+        uses: 8Mi-Tech/delete-release-assets-action@main
+        with:
+          tag: latest
+          deleteOnlyFromDrafts: false
       - name: Push artifacts to release
         uses: softprops/action-gh-release@v1
         with:
